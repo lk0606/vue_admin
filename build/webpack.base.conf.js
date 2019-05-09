@@ -4,6 +4,8 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
+const StringReplacePlugin = require("string-replace-webpack-plugin");
+
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -35,6 +37,23 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
+      },
+      // 字符串全局替换
+      {
+        test: /\.vue$/,
+        loader: StringReplacePlugin.replace({
+          replacements: [
+            {
+              // pattern: /<!-- @secret (\w*?) -->/ig,
+              pattern: /www/ig,
+              replacement: function (match, p1, offset, string) {
+                // return secrets.web[p1];
+                console.log(process.env.NODE_ENV, '---------process.env-------')
+                console.log(match, '---------match')
+                return '我是测试'
+              }
+            }
+          ]})
       },
       {
         test: /\.js$/,

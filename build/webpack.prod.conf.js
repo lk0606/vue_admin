@@ -9,6 +9,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+
+const StringReplace = require('string-replace-webpack-plugin')
+const HtmlStringReplace = require('html-string-replace-webpack-plugin');
+
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const env = require('../config/prod.env')
@@ -74,6 +78,22 @@ const webpackConfig = merge(baseWebpackConfig, {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
+
+    // 全局字符串替换
+    new StringReplace(),
+    // .html 字符串替换
+    // new HtmlStringReplace({
+    //   enable: true,
+    //   patterns: [
+    //     {
+    //       match: /href/g,
+    //       replacement: function (match) {
+    //         return match;
+    //       }
+    //     },
+    //   ]
+    // }),
+
     // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
     // enable scope hoisting
