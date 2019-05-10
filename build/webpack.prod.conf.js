@@ -82,17 +82,17 @@ const webpackConfig = merge(baseWebpackConfig, {
     // 全局字符串替换
     new StringReplace(),
     // .html 字符串替换
-    // new HtmlStringReplace({
-    //   enable: true,
-    //   patterns: [
-    //     {
-    //       match: /href/g,
-    //       replacement: function (match) {
-    //         return match;
-    //       }
-    //     },
-    //   ]
-    // }),
+    new HtmlStringReplace({
+      enable: true,
+      patterns: [
+        {
+          match: /www/g,
+          replacement: function (match) {
+            return '我是测试';
+          }
+        },
+      ]
+    }),
 
     // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
