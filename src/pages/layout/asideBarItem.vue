@@ -3,35 +3,38 @@
 
     <template v-if="router">
       <!--一级菜单-->
-      <template v-for="(one, oneKey) in router" >
-        <el-submenu :index="one.path" v-if="one.hasOwnProperty('children')">
-          <span slot="title">{{one.name}}</span>
+      <template v-for="(parent, parentKey) in router.children" >
+        <el-submenu
+          :index="parent.path"
+          v-if="parent.hasOwnProperty('children')" :key="parent.path">
+          <span slot="title">{{parent.name}}</span>
           <!--二级菜单-->
-          <template v-for="(two, twoKey) in one.children">
-            <el-submenu
-              v-if="two.hasOwnProperty('children')"
-              :index="two.path" >
-              <span slot="title">{{two.name}}</span>
-              <!--三级菜单-->
-              <!--                      <template v-if="two.hasOwnProperty('children')">-->
-              <el-menu-item :index="three.path" v-for="(three, threeKey) in two.children" :key="threeKey">
-                {{three.name}}
-              </el-menu-item>
-              <!--                      </template>-->
-            </el-submenu>
+          <asideBarItem
+            v-for="(child, childKey) in parent.children" :key="child.path"
+            :router="child"
+          >
 
-            <el-menu-item
-              v-else
-              :index="two.path" >
-              {{two.name}}
-            </el-menu-item>
-          </template>
+            <!--<el-submenu-->
+              <!--v-if="child.hasOwnProperty('children')"-->
+              <!--:index="child.path" >-->
+              <!--<span slot="title">{{child.name}}</span>-->
+
+            <!--</el-submenu>-->
+
+            <!--<el-menu-item-->
+              <!--v-else-->
+              <!--:index="child.path" >-->
+              <!--{{child.name}}-->
+            <!--</el-menu-item>-->
+
+          </asideBarItem>
         </el-submenu>
 
         <el-menu-item
           v-else
-          :index="one.path">
-          {{one.name}}
+          :key="parent.path"
+          :index="parent.path">
+          {{parent.name}}
         </el-menu-item>
       </template>
 

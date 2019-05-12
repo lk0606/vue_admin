@@ -12,9 +12,7 @@
           active-text-color="#ffd04b">
 
           <asideBarItem
-            v-for="(router, key) in routers"
-            :router="router"
-            :key="key"
+            :router="routers"
           >
           </asideBarItem>
 
@@ -37,7 +35,7 @@
     },
     computed: {
       routers () {
-        return this.$router.options.routes
+        return this.$router.options.routes[0]
       }
     },
     watch: {},

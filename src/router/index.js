@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import layout from '../pages/layout/index'
+
 Vue.use(Router)
 
 const constantRouter = [
@@ -12,32 +14,50 @@ const constantRouter = [
   {
     path: '/',
     name: '首页',
-    component: ()=> import( '../pages/layout/index' ),
+    component: layout,
     children: [
       {
-        path: '/two/1',
-        name: '二级菜单-1',
-        component: ()=> import( '../pages/asideBar/two' ),
+        path: '/one-1',
+        name: '一级菜单-1',
+        component: ()=> import( '../pages/layout/appMain' ),
+        // redirect: '/two-1',
         children: [
           {
-            path: '/three',
-            name: '三级菜单',
-            component: ()=> import( '../pages/asideBar/three' )
+            path: '/two-1',
+            name: '二级菜单',
+            // redirect: '/three-1',
+            component: ()=> import( '../pages/layout/appMain' ),
+            children: [
+              {
+                path: '/three-1',
+                name: '三级级菜单-1',
+                component: ()=> import( '../pages/asideBar/three' ),
+                // children: [
+                //   {
+                //     path: '/three-1',
+                //     name: '三级级菜单-1',
+                //     component: ()=> import( '../pages/asideBar/three' ),
+                //     children: [
+                //       {
+                //         path: '/three-1',
+                //         name: '三级级菜单-1',
+                //         component: ()=> import( '../pages/asideBar/three' ),
+                //       }
+                //     ]
+                //   }
+                // ]
+              }
+            ]
           },
         ]
       },
       {
-        path: '/two/2',
-        name: '二级菜单-2',
-        component: ()=> import( '../pages/asideBar/two2' )
+        path: '/one-2',
+        name: '一级菜单-2',
+        component: ()=> import( '../pages/asideBar/one2' )
       },
     ]
-  },
-  // {
-  //   path: '/one-2',
-  //   name: '一级菜单-2',
-  //   component: ()=> import( '../pages/asideBar/one2' )
-  // },
+  }
 ]
 
 
