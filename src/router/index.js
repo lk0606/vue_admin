@@ -11,7 +11,7 @@ const constantRouter = [
   // },
   {
     path: '/',
-    name: '一级菜单-1',
+    name: '首页',
     component: ()=> import( '../pages/layout/index' ),
     children: [
       {
