@@ -7,10 +7,12 @@
       </el-aside>
       <el-main>
         <el-breadcrumb separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>活动管理</el-breadcrumb-item>
-          <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-          <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+          <!--<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>-->
+          <!--<el-breadcrumb-item>活动管理</el-breadcrumb-item>-->
+          <!--<el-breadcrumb-item>活动列表</el-breadcrumb-item>-->
+          <el-breadcrumb-item v-for="item in levelList" :key="item.path">
+            {{item.name}}
+          </el-breadcrumb-item>
         </el-breadcrumb>
         <appMain></appMain>
       </el-main>
@@ -30,7 +32,9 @@ export default {
     appMain
   },
   data() {
-    return {}
+    return {
+      levelList: null
+    }
   },
   computed: {
     routerKey() {
@@ -38,9 +42,23 @@ export default {
       return this.$route.fullPath
     }
   },
-  watch: {},
-  methods: {},
+  watch: {
+    $route() {
+      this.getBreadcrumb()
+    }
+  },
+  methods: {
+    getBreadcrumb() {
+      let matched = this.$route.matched.filter(item => item.name)
+//      const first = matched[0]
+//      if (first && first.name !== 'dashboard') {
+//        matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
+//      }
+      this.levelList = matched
+    }
+  },
   created() {
+    this.getBreadcrumb()
   },
   mounted() {
   }

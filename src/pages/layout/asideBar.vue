@@ -12,7 +12,9 @@
           active-text-color="#ffd04b">
 
           <asideBarItem
-            :router="routers"
+            v-for="router in routers"
+            :router="router"
+            :key="router.path"
           >
           </asideBarItem>
 
@@ -35,7 +37,8 @@
     },
     computed: {
       routers () {
-        return this.$router.options.routes[0]
+        console.log(this.$router.options.routes[0].children)
+        return this.$router.options.routes[0].children
       }
     },
     watch: {},
