@@ -12,7 +12,7 @@
           <el-breadcrumb-item>活动列表</el-breadcrumb-item>
           <el-breadcrumb-item>活动详情</el-breadcrumb-item>
         </el-breadcrumb>
-        <router-view></router-view>
+        <router-view :key="routerKey"></router-view>
       </el-main>
     </el-container>
   </el-container>
@@ -28,7 +28,12 @@ export default {
   data() {
     return {}
   },
-  computed: {},
+  computed: {
+    routerKey() {
+      // console.log(this.$route.fullPath, 'this.$route.fullPath')
+      return this.$route.fullPath
+    }
+  },
   watch: {},
   methods: {},
   created() {

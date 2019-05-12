@@ -11,13 +11,8 @@ const constantRouter = [
   // },
   {
     path: '/',
-    name: 'index',
-    component: ()=> import( '../pages/layout/index' )
-  },
-  {
-    path: '/one-1',
     name: '一级菜单-1',
-    component: ()=> import( '../pages/asideBar/one' ),
+    component: ()=> import( '../pages/layout/index' ),
     children: [
       {
         path: '/two/1',
@@ -38,11 +33,11 @@ const constantRouter = [
       },
     ]
   },
-  {
-    path: '/one-2',
-    name: '一级菜单-2',
-    component: ()=> import( '../pages/asideBar/one2' )
-  },
+  // {
+  //   path: '/one-2',
+  //   name: '一级菜单-2',
+  //   component: ()=> import( '../pages/asideBar/one2' )
+  // },
 ]
 
 

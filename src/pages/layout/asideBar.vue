@@ -65,8 +65,8 @@
     },
     computed: {
       router() {
-        console.log(this.$router.options.routes.slice(1))
-        return this.$router.options.routes.slice(1)
+        console.log(this.$router.options.routes)
+        return this.$router.options.routes
       }
     },
     watch: {},
