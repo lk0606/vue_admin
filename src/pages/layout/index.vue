@@ -6,14 +6,32 @@
         <asideBar></asideBar>
       </el-aside>
       <el-main>
-        <el-breadcrumb separator-class="el-icon-arrow-right">
-          <!--<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>-->
-          <!--<el-breadcrumb-item>活动管理</el-breadcrumb-item>-->
-          <!--<el-breadcrumb-item>活动列表</el-breadcrumb-item>-->
-          <el-breadcrumb-item v-for="item in levelList" :key="item.path">
-            {{item.name}}
-          </el-breadcrumb-item>
-        </el-breadcrumb>
+        <el-row type="flex"
+                align="middle"
+                class="nav-bar"
+        >
+          <el-breadcrumb
+            class="breadcrumb"
+            separator-class="el-icon-arrow-right">
+            <!--<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>-->
+            <!--<el-breadcrumb-item>活动管理</el-breadcrumb-item>-->
+            <!--<el-breadcrumb-item>活动列表</el-breadcrumb-item>-->
+            <el-breadcrumb-item
+              v-for="item in routerList" :key="item.path"
+              :to="{ path: `${item.path}` }"
+            >
+              {{item.name}}
+            </el-breadcrumb-item>
+          </el-breadcrumb>
+            <el-tag
+              class="tag"
+              :key="tag"
+              v-for="tag in dynamicTags"
+              closable
+              @close="handleClose(tag)">
+              {{tag}}
+            </el-tag>
+        </el-row>
         <appMain></appMain>
       </el-main>
     </el-container>
@@ -33,7 +51,8 @@ export default {
   },
   data() {
     return {
-      levelList: null
+      routerList: null,
+      dynamicTags: ['标签一', '标签二', '标签三'],
     }
   },
   computed: {
@@ -48,13 +67,17 @@ export default {
     }
   },
   methods: {
+    handleClose(tag) {
+      this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+    },
     getBreadcrumb() {
       let matched = this.$route.matched.filter(item => item.name)
 //      const first = matched[0]
 //      if (first && first.name !== 'dashboard') {
 //        matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
 //      }
-      this.levelList = matched
+      this.routerList = matched
+      console.log(this.routerList, 'this.routerList')
     }
   },
   created() {
@@ -92,5 +115,15 @@ export default {
   }
   .index-container {
     height: 100%;
+  }
+  .nav-bar {
+    border-bottom: 1px solid brown;
+    padding-bottom: 20px;
+    .breadcrumb {
+      margin-right: 50px;
+    }
+    .tag {
+      margin-right: 10px;
+    }
   }
 </style>

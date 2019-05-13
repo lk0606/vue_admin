@@ -20,13 +20,15 @@ const constantRouter = [
         path: '/one-1',
         name: '一级菜单-1',
         component: ()=> import( '../pages/layout/appMain' ),
-        // redirect: '/two-1',
+        // component: ()=> import( '../pages/asideBar/one' ),
+        redirect: '/two-1',
         children: [
           {
             path: '/two-1',
             name: '二级菜单',
-            // redirect: '/three-1',
+            redirect: '/three-1',
             component: ()=> import( '../pages/layout/appMain' ),
+            // component: ()=> import( '../pages/asideBar/two' ),
             children: [
               {
                 path: '/three-1',
