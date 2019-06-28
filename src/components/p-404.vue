@@ -1,20 +1,19 @@
 <template>
-  <div class="appMain-container">
-    <router-view></router-view>
+  <div class="p-404-container">
+    404 not found
   </div>
 </template>
 
 <script>
   export default {
-    name: 'appMain',
+    name: 'p-404',
     components: {},
     data() {
       return {}
     },
     computed: {},
     watch: {},
-    methods: {
-    },
+    methods: {},
     created() {
     },
     mounted() {
@@ -23,6 +22,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .appMain-container {
+  .p-404-container {
   }
 </style>

@@ -58,6 +58,11 @@ const constantRouter = [
         name: '一级菜单-2',
         component: ()=> import( '../pages/asideBar/one2' )
       },
+      {
+        path: '/count-down',
+        name: '倒计时',
+        component: ()=> import( '../components/count-down' )
+      },
     ]
   }
 ]
