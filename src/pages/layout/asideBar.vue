@@ -41,7 +41,13 @@
         return this.$router.options.routes[0].children
       }
     },
-    watch: {},
+    watch: {
+      // routers: {
+      //   handler(val) {
+      //     console.log(val, 'val')
+      //   }
+      // }
+    },
     methods: {
       handleOpen(key, keyPath) {
         console.log(key, keyPath, 'handleOpen');

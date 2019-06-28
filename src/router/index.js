@@ -59,6 +59,11 @@ const constantRouter = [
         component: ()=> import( '../pages/asideBar/one2' )
       },
     ]
+  },
+  {
+    path: '/login',
+      name: 'login',
+      component: ()=> import( '../pages/login/login' )
   }
 ]
 
@@ -66,11 +71,23 @@ const constantRouter = [
 const asyncRouter = [
   {
     path: '/asyncRouter',
-    name: 'asyncRouter',
+    name: '异步路由',
     component: ()=> import( '../pages/asyncRouter' )
   }
 ]
 
-export default new Router({
+
+const router = new Router({
   routes: constantRouter
 })
+
+// router.beforeEach((to, from, next) => {
+//   if(to.name === 'login') {
+//     // next('/three-1')
+//   }
+//   // next('/three-1')
+//   console.log(to, from, next, 'next')
+// })
+
+
+export default router
