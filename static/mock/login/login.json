@@ -1,0 +1,27 @@
+{
+  "code": 200,
+  "info": "登录成功",
+  "data": [
+    {
+      "name": "visitor",
+      "role": "visit",
+      "permission": {
+        "menu": []
+      }
+    },
+    {
+      "name": "admin",
+      "role": "admin",
+      "permission": {
+        "menu": ["admin"]
+      }
+    },
+    {
+      "name": "superAdmin",
+      "role": "superAdmin",
+      "permission": {
+        "menu": ["superAdmin"]
+      }
+    }
+  ]
+}

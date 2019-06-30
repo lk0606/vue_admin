@@ -1,5 +1,5 @@
 <template>
-  <div class="aside-container">
+  <div class="app-sub-aside-container">
     <el-row class="tac">
       <el-col :span="24">
         <el-menu
@@ -11,12 +11,12 @@
           text-color="#fff"
           active-text-color="#ffd04b">
 
-          <asideBarItem
-            v-for="router in routers"
+          <appSubAside
+            v-for="router in addRoutes"
             :router="router"
             :key="router.path"
           >
-          </asideBarItem>
+          </appSubAside>
 
         </el-menu>
       </el-col>
@@ -25,28 +25,28 @@
 </template>
 
 <script>
-  import asideBarItem from './asideBarItem'
+  import appSubAside from './app-sub-aside';
+  import { mapGetters } from 'vuex';
+
   export default {
-    name: 'asideBar',
+    name: 'app-aside',
     components: {
-      asideBarItem
+      appSubAside
     },
     data() {
       return {
       }
     },
     computed: {
-      routers () {
-        console.log(this.$router.options.routes[0].children)
-        return this.$router.options.routes[0].children
-      }
+      ...mapGetters('user', [
+        'addRoutes'
+      ])
+      // routers () {
+      //   console.log(this.$router.options.routes[0].children)
+      //   return this.$router.options.routes[0].children
+      // }
     },
     watch: {
-      // routers: {
-      //   handler(val) {
-      //     console.log(val, 'val')
-      //   }
-      // }
     },
     methods: {
       handleOpen(key, keyPath) {
@@ -59,13 +59,13 @@
     created() {
     },
     mounted() {
-      // console.log(this.$router.options.routes[1])
+      console.log(this.addRoutes, 'addRoutes')
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  .aside-container {
+  .app-sub-aside-container {
     height: inherit;
   }
 </style>

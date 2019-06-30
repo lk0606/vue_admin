@@ -1,31 +1,31 @@
 <template>
-  <div class="asideBarItem-container">
+  <div class="app-sub-aside-container">
 
         <el-submenu
           :index="router.path"
           v-if="router.hasOwnProperty('children')" >
-          <span slot="title">{{router.name}}</span>
+          <span slot="title">{{router.meta.title}}</span>
 
           <!--递归子导航-->
-          <asideBarItem
-            v-for="(child, childKey) in router.children" :key="child.path"
+          <appSubAside
+            v-for="child in router.children" :key="child.path"
             :router="child"
           >
-          </asideBarItem>
+          </appSubAside>
         </el-submenu>
 
         <el-menu-item
           v-else
           :key="router.path"
           :index="router.path">
-          {{router.name}}
+          {{router.meta.title}}
         </el-menu-item>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'asideBarItem',
+    name: 'appSubAside',
     props: {
       router: {
         type: Object
@@ -36,20 +36,19 @@
       return {}
     },
     computed: {
-      // router () {
-      //   return this.$router.options.routes
-      // }
     },
     watch: {},
-    methods: {},
+    methods: {
+    },
     created() {
     },
     mounted() {
+      // this.initTitle()
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  .asideBarItem-container {
+  .app-sub-aside-container {
   }
 </style>

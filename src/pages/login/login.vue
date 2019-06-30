@@ -7,6 +7,7 @@
       label-width="80px"
       label-position="left"
       class="login-form">
+
       <el-form-item label="账号" prop="name">
         <el-input
           clearable
@@ -37,37 +38,61 @@
 </template>
 
 <script>
-  export default {
-    name: 'login',
-    components: {},
-    data() {
-      return {
-        loginForm: {
-          name: 'lk',
-          pass: '123'
-        },
-        rules: {
-          name: [
-            { required: true, message: '请输入账号', trigger: ['blur', 'change'] },
-          ],
-          pass: [
-            { required: true, message: '请输入密码', trigger: ['blur', 'change'] },
-          ],
-        }
+import { login } from "../../api/login";
+
+export default {
+  name: 'login',
+  components: {},
+  data() {
+    return {
+      loginForm: {
+        name: 'superAdmin',
+        pass: '123'
+      },
+      rules: {
+        name: [
+          {required: true, message: '请输入账号', trigger: ['blur', 'change']},
+        ],
+        pass: [
+          {required: true, message: '请输入密码', trigger: ['blur', 'change']},
+        ],
       }
-    },
-    computed: {},
-    watch: {},
-    methods: {
-      login() {
-        this.$router.push('/')
-      }
-    },
-    created() {
-    },
-    mounted() {
     }
+  },
+  computed: {
+  },
+  watch: {
+  },
+  methods: {
+    login() {
+      this.$store.dispatch('user/login', this.loginForm).then(res=> {
+        this.$message.success(`${res.data[0].name}，${res.info}`)
+        this.$router.push('/')
+      }).catch(err=> {
+        this.$message.error(err)
+      })
+      // login().then(res=> {
+      //
+      //   const userInfo = res.data.data.filter(item=> {
+      //     if(this.loginForm.name === item.name) {
+      //       return item
+      //     }
+      //   })
+      //
+      //   this.$store.dispatch('user/online', [true, ...userInfo]).then( rep=> {
+      //     this.$message.success(`${userInfo[0].name}，${res.data.info}`)
+      //     this.$router.push('/')
+      //   })
+      // }).catch(err=> {
+      //   console.log(err, 'login err')
+      // })
+    }
+  },
+  created() {
+  },
+  mounted() {
   }
+}
 </script>
 
 <style lang="scss" scoped>

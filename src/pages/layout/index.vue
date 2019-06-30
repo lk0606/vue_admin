@@ -1,9 +1,11 @@
 <template>
   <el-container class="index-container">
-    <el-header>Header</el-header>
+    <el-header>
+      <appNav></appNav>
+    </el-header>
     <el-container>
-      <el-aside width="200px">
-        <asideBar></asideBar>
+      <el-aside width="210px">
+        <appAside></appAside>
       </el-aside>
       <el-main>
         <el-row type="flex"
@@ -13,16 +15,15 @@
           <el-breadcrumb
             class="breadcrumb"
             separator-class="el-icon-arrow-right">
-            <!--<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>-->
-            <!--<el-breadcrumb-item>活动管理</el-breadcrumb-item>-->
-            <!--<el-breadcrumb-item>活动列表</el-breadcrumb-item>-->
+
             <el-breadcrumb-item
               v-for="item in routerList" :key="item.path"
               :to="{ path: `${item.path}` }"
             >
-              {{item.name}}
+              {{item.meta.title}}
             </el-breadcrumb-item>
           </el-breadcrumb>
+
             <el-tag
               class="tag"
               :key="tag"
@@ -39,15 +40,14 @@
 </template>
 
 <script>
-
-import asideBar from './asideBar'
-import appMain from './appMain'
+import {appMain, appAside, appNav} from "./components";
 
 export default {
   name: 'index',
   components: {
-    asideBar,
-    appMain
+    appMain,
+    appAside,
+    appNav,
   },
   data() {
     return {
@@ -56,13 +56,12 @@ export default {
     }
   },
   computed: {
-    routerKey() {
-      // console.log(this.$route.fullPath, 'this.$route.fullPath')
-      return this.$route.fullPath
-    }
   },
   watch: {
-    $route() {
+    $route(val) {
+      if(val) {
+        console.log(val, '$route')
+      }
       this.getBreadcrumb()
     }
   },
@@ -72,10 +71,6 @@ export default {
     },
     getBreadcrumb() {
       let matched = this.$route.matched.filter(item => item.name)
-//      const first = matched[0]
-//      if (first && first.name !== 'dashboard') {
-//        matched = [{ path: '/dashboard', meta: { title: 'Dashboard' }}].concat(matched)
-//      }
       this.routerList = matched
       console.log(this.routerList, 'this.routerList')
     }

@@ -8,10 +8,16 @@
 
 export default {
   name: 'App',
-  computed: {
-    routerKey() {
-      // console.log(this.$route.fullPath, 'this.$route.fullPath')
-      return this.$route.fullPath
+  methods: {
+    initTitle() {
+      document.title = this.$route.meta.title
+    }
+  },
+  watch: {
+    $route(route){
+      if(route.meta.title){
+        this.initTitle()
+      }
     }
   }
 }

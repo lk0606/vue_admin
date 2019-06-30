@@ -1,19 +1,20 @@
 <template>
-  <div class="one2-container">
-    一级菜单2
+  <div class="app-main-container">
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'one2',
+    name: 'app-main',
     components: {},
     data() {
       return {}
     },
     computed: {},
     watch: {},
-    methods: {},
+    methods: {
+    },
     created() {
     },
     mounted() {
@@ -22,6 +23,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .one2-container {
+  .app-main-container {
   }
 </style>
