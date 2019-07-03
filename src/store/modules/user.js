@@ -17,6 +17,8 @@ export default {
   },
   actions: {
     login({dispatch, commit, state}, loginInfo) {
+      // debugger
+
       if(loginInfo) {
         cache.set('loginInfo', loginInfo)
         state.loginInfo = loginInfo
@@ -29,7 +31,6 @@ export default {
               return item
             }
           })
-          debugger
           if(userInfo.length>0) {
             const {name, role, permission} = userInfo[0]
             // cache
@@ -41,7 +42,9 @@ export default {
             state.permission = permission
 
             state.addRoutes = addRoutes
+            // debugger
             router.addRoutes(addRoutes)
+            // debugger
 
             res.data = userInfo
             resolve(res)

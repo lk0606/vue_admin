@@ -12,7 +12,7 @@ Vue.use(Router)
 export const addRoutes = [
   {
     path: '/',
-    name: '/',
+    name: 'index',
     component: layout,
     meta: {
       title: '首页',
@@ -48,7 +48,7 @@ export const addRoutes = [
       },
     ]
   },
-  { path: '*', redirect: '/404', hidden: true }
+  // { path: '*', redirect: '/404', hidden: true }
 ]
 
 
