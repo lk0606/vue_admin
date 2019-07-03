@@ -10,40 +10,9 @@ import layout from '../pages/layout/index'
 Vue.use(Router)
 
 export const addRoutes = [
-      // {
-      //   path: '/one-1',
-      //   name: 'one-1',
-      //   component: layout,
-      //   redirect: '/two-1',
-      //   meta: {
-      //     title: '一级菜单1',
-      //     icon: '',
-      //     // cache: false,
-      //   },
-      //   children: [
-      //     {
-      //       path: '/two-1',
-      //       name: '二级菜单',
-      //       redirect: '/three-1',
-      //       component: ()=> import( '../pages/layout/components/app-main' ),
-      //       children: [
-      //         {
-      //           path: '/three-1',
-      //           name: '三级级菜单-1',
-      //           component: ()=> import( '../pages/asideBar/three' ),
-      //         }
-      //       ]
-      //     },
-      //   ]
-      // },
-      // {
-      //   path: '/one-2',
-      //   name: '一级菜单-2',
-      //   component: layout
-      // },
   {
     path: '/',
-    name: '/',
+    name: 'index',
     component: layout,
     meta: {
       title: '首页',
@@ -79,6 +48,7 @@ export const addRoutes = [
       },
     ]
   },
+  // { path: '*', redirect: '/404', hidden: true }
 ]
 
 
@@ -103,8 +73,7 @@ const whiteList = [
       // cache: false,
       // hidden: false,
     },
-  },
-  { path: '*', redirect: '/404', hidden: true }
+  }
 ]
 
 export const menu = [

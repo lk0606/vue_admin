@@ -17,6 +17,8 @@ export default {
   },
   actions: {
     login({dispatch, commit, state}, loginInfo) {
+      // debugger
+
       if(loginInfo) {
         cache.set('loginInfo', loginInfo)
         state.loginInfo = loginInfo
@@ -38,10 +40,12 @@ export default {
             state.name = name
             state.role = role
             state.permission = permission
-            if(state.addRoutes.length<=0) {
-              state.addRoutes = addRoutes
-              router.addRoutes(addRoutes)
-            }
+
+            state.addRoutes = addRoutes
+            // debugger
+            router.addRoutes(addRoutes)
+            // debugger
+
             res.data = userInfo
             resolve(res)
           }
