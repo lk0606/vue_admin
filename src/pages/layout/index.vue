@@ -79,6 +79,7 @@ export default {
     this.getBreadcrumb()
   },
   mounted() {
+    console.log(this.$router, 'this.$router')
   }
 }
 </script>
