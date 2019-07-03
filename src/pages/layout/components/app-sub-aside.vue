@@ -3,7 +3,7 @@
 
         <el-submenu
           :index="router.path"
-          v-if="router.hasOwnProperty('children')" >
+          v-if="router.children" >
           <span slot="title">{{router.meta.title}}</span>
 
           <!--递归子导航-->
@@ -15,7 +15,7 @@
         </el-submenu>
 
         <el-menu-item
-          v-else
+          v-else-if="!router.children && !router.hidden"
           :key="router.path"
           :index="router.path">
           {{router.meta.title}}

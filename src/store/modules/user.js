@@ -29,6 +29,7 @@ export default {
               return item
             }
           })
+          debugger
           if(userInfo.length>0) {
             const {name, role, permission} = userInfo[0]
             // cache
@@ -38,10 +39,10 @@ export default {
             state.name = name
             state.role = role
             state.permission = permission
-            if(state.addRoutes.length<=0) {
-              state.addRoutes = addRoutes
-              router.addRoutes(addRoutes)
-            }
+
+            state.addRoutes = addRoutes
+            router.addRoutes(addRoutes)
+
             res.data = userInfo
             resolve(res)
           }
