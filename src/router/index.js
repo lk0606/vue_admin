@@ -99,9 +99,9 @@ export const menu = [
 ]
 
 
-const r = new Router({
-  routes: whiteList
-})
+// const r = new Router({
+//   routes: whiteList
+// })
 // console.log(r, 'r')
 // const newRouter = new Router({
 //   routes: whiteList
