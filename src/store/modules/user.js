@@ -1,5 +1,5 @@
 
-import router, { addRoutes } from "../../router"
+import router, { addRoutes, resetRouter } from "../../router"
 
 import cache from '../../utils/cache'
 // api
@@ -65,7 +65,8 @@ export default {
       state.role = ''
       state.permission = []
       state.addRoutes = []
-      console.log(router, 'router')
+      resetRouter()
+      // console.log(router, 'router')
       return new Promise((resolve, reject) => {
         resolve('登出成功')
       })

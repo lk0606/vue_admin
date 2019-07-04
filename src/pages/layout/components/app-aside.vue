@@ -59,7 +59,6 @@
     created() {
     },
     mounted() {
-      console.log(this.addRoutes, 'addRoutes')
     }
   }
 </script>

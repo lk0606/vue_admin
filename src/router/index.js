@@ -99,8 +99,31 @@ export const menu = [
 ]
 
 
-const router = new Router({
+const r = new Router({
+  routes: whiteList
+})
+// console.log(r, 'r')
+// const newRouter = new Router({
+//   routes: whiteList
+// })
+// export function resetRouter() {
+//   router.matcher = newRouter.matcher
+// }
+
+const createRouter = () => new Router({
+  // mode: 'history', // require service support
+  scrollBehavior: () => ({ y: 0 }),
   routes: whiteList
 })
 
+const router = createRouter()
+
+// console.log(router, 'router')
+// console.log(r===router, 'r===router')
+
+// Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // reset router
+}
 export default router

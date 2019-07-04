@@ -70,8 +70,7 @@ export default {
       this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
     },
     getBreadcrumb() {
-      let matched = this.$route.matched.filter(item => item.name)
-      this.routerList = matched
+      this.routerList = this.$route.matched.filter(item => item.name)
       console.log(this.routerList, 'this.routerList')
     }
   },
@@ -79,7 +78,6 @@ export default {
     this.getBreadcrumb()
   },
   mounted() {
-    console.log(this.$router, 'this.$router')
   }
 }
 </script>
