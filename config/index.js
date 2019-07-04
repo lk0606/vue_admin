@@ -10,7 +10,18 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/mp4': {
+        target: 'http://d1uqemdciwkits.cloudfront.net',
+        changeOrigin: true,
+        // cookieDomainRewrite: {
+        //   'localhost:8080':'http://192.168.199.233:9999'
+        // },
+        pathRewrite:{
+          '^/mp4':'/'
+        }
+      },
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
