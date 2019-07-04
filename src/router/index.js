@@ -46,6 +46,18 @@ export const addRoutes = [
           // hidden: false,
         },
       },
+      {
+        path: '/download',
+        name: 'download',
+        component: ()=> import( '../components/download' ),
+        meta: {
+          title: '下载',
+          icon: '',
+          role: '',
+          // cache: false,
+          // hidden: false,
+        },
+      },
     ]
   },
   { path: '*', redirect: '/404', hidden: true }

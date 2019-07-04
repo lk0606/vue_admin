@@ -8,7 +8,7 @@ import qs from 'qs'
 const service = axios.create({
   // baseURL: 'http://localhost:8080', // api的base_url
   baseURL: '/static/mock', // api的base_url
-  timeout: 10000, // request timeout/
+  timeout: 1000000, // request timeout/
   // headers: {
   //   // 'lk-auth': 'lk-admin '
   //   'X-Requested-With': 'XMLHttpRequest',
@@ -42,6 +42,10 @@ service.interceptors.request.use(
 // 响应拦截器
 service.interceptors.response.use(res => {
     console.log(res, 'res')
+    if(res.headers['content-type'] === 'video/mp4'){
+      // debugger
+      return res;
+    }
     return Promise.resolve(res.data)
     // return res
   },
