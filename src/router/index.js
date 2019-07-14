@@ -16,7 +16,7 @@ export const addRoutes = [
     component: layout,
     meta: {
       title: '首页',
-      icon: '',
+      icon: 'monitor',
       role: '',
       // cache: false,
       // hidden: false,
@@ -28,7 +28,7 @@ export const addRoutes = [
     component: layout,
     meta: {
       title: '组件',
-      icon: '',
+      icon: 'attract',
       role: '',
       // cache: false,
       // hidden: false,
@@ -40,7 +40,7 @@ export const addRoutes = [
         component: ()=> import( '../components/count-down' ),
         meta: {
           title: '倒计时',
-          icon: '',
+          icon: 'alarm-clock',
           role: '',
           // cache: false,
           // hidden: false,
@@ -52,7 +52,19 @@ export const addRoutes = [
         component: ()=> import( '../components/download' ),
         meta: {
           title: '下载',
-          icon: '',
+          icon: 'download',
+          role: '',
+          // cache: false,
+          // hidden: false,
+        },
+      },
+      {
+        path: '/table',
+        name: 'table',
+        component: ()=> import( '../components/table' ),
+        meta: {
+          title: '表格',
+          icon: 's-grid',
           role: '',
           // cache: false,
           // hidden: false,

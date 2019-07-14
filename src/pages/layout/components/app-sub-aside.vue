@@ -1,10 +1,15 @@
 <template>
-  <div class="app-sub-aside-container">
+  <div class="app-sub-aside-container el-menu-item-reset">
 
         <el-submenu
           :index="router.path"
           v-if="router.children" >
-          <span slot="title">{{router.meta.title}}</span>
+          <div slot="title" class="title-wrap ">
+            <i
+              v-if="router.meta.icon"
+              :class="`el-icon-${router.meta.icon}`"></i>
+            <span>{{router.meta.title}}</span>
+          </div>
 
           <!--递归子导航-->
           <appSubAside
@@ -18,7 +23,12 @@
           v-else-if="!router.children && !router.hidden"
           :key="router.path"
           :index="router.path">
-          {{router.meta.title}}
+          <div slot="title" class="title-wrap">
+            <i
+              v-if="router.meta.icon"
+              :class="`el-icon-${router.meta.icon}`"></i>
+            <span>{{router.meta.title}}</span>
+          </div>
         </el-menu-item>
   </div>
 </template>
@@ -50,5 +60,9 @@
 
 <style lang="scss" scoped>
   .app-sub-aside-container {
+  }
+  .title-wrap {
+    text-align: left;
+    padding-left: 10px;
   }
 </style>
