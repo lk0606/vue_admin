@@ -2,7 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
 // global style
-import './assets/styles/common.scss'
+import './styles/common.scss'
+import './styles/element-reset.scss'
 import 'normalize.css'
 // vue series
 import Vue from 'vue'

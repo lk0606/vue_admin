@@ -24,5 +24,6 @@
 
 <style lang="scss" scoped>
   .app-main-container {
+    padding-top: 20px;
   }
 </style>
