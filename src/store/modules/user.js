@@ -40,9 +40,7 @@ export default {
             state.permission = permission
 
             state.addRoutes = addRoutes
-            // debugger
             router.addRoutes(addRoutes)
-            // debugger
 
             res.data = userInfo
             resolve(res)

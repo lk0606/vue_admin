@@ -14,6 +14,13 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 
+// player
+import VueVideoPlayer from 'vue-video-player'
+import 'video.js/dist/video-js.css'
+import 'vue-video-player/src/custom-theme.css'
+
+Vue.use(VueVideoPlayer)
+
 Vue.config.productionTip = false
 
 import './permission'

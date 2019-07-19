@@ -58,6 +58,18 @@ export const addRoutes = [
           // hidden: false,
         },
       },
+      {
+        path: '/video-player',
+        name: 'video-player',
+        component: ()=> import( '../components/video-player' ),
+        meta: {
+          title: 'vue-player',
+          icon: '',
+          role: '',
+          // cache: false,
+          // hidden: false,
+        },
+      },
     ]
   },
   { path: '*', redirect: '/404', hidden: true }
