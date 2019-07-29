@@ -11,7 +11,7 @@ Vue.use(Router)
 
 export const addRoutes = [
   {
-    path: '/',
+    path: '/index',
     name: 'index',
     component: layout,
     meta: {
@@ -76,11 +76,73 @@ export const addRoutes = [
         component: ()=> import( '../components/video-player' ),
         meta: {
           title: 'vue-player',
-          icon: '',
+          icon: 'video-camera',
           role: '',
           // cache: false,
           // hidden: false,
         },
+      },
+    ]
+  },
+  {
+    path: '/auth',
+    name: 'auth',
+    component: layout,
+    meta: {
+      title: '权限',
+      icon: 'lock',
+      role: '',
+      // cache: false,
+      // hidden: false,
+    },
+    children: [
+      {
+        path: '/auth-config',
+        name: 'auth-config',
+        component: ()=> import( '../pages/auth/auth-config' ),
+        meta: {
+          title: '权限配置',
+          // icon: 'lock',
+          role: '',
+          // cache: false,
+          // hidden: false,
+        }
+      },
+      {
+        path: '/auth-visitor',
+        name: 'auth-visitor',
+        component: ()=> import( '../pages/auth/auth-visitor' ),
+        meta: {
+          title: 'visitor-权限',
+          // icon: 'lock',
+          role: 'visitor',
+          // cache: false,
+          // hidden: false,
+        }
+      },
+      {
+        path: '/auth-admin',
+        name: 'auth-admin',
+        component: ()=> import( '../pages/auth/auth-admin' ),
+        meta: {
+          title: 'admin-权限',
+          // icon: 'lock',
+          role: 'admin',
+          // cache: false,
+          // hidden: false,
+        }
+      },
+      {
+        path: '/auth-superAdmin',
+        name: 'auth-superAdmin',
+        component: ()=> import( '../pages/auth/auth-super-admin' ),
+        meta: {
+          title: 'superAdmin-权限',
+          // icon: 'lock',
+          role: 'superAdmin',
+          // cache: false,
+          // hidden: false,
+        }
       },
     ]
   },

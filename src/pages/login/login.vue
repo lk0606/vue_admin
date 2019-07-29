@@ -67,7 +67,7 @@ export default {
     login() {
       this.$store.dispatch('user/login', this.loginForm).then(res=> {
         this.$message.success(`${res.data[0].name}，${res.info}`)
-        this.$router.push('/')
+        this.$router.push('/index')
       }).catch(err=> {
         this.$message.error(err)
       })
@@ -81,7 +81,7 @@ export default {
       //
       //   this.$store.dispatch('user/online', [true, ...userInfo]).then( rep=> {
       //     this.$message.success(`${userInfo[0].name}，${res.data.info}`)
-      //     this.$router.push('/')
+      //     this.$router.push('/index')
       //   })
       // }).catch(err=> {
       //   console.log(err, 'login err')

@@ -13,7 +13,7 @@ router.beforeEach((to, from, next)=> {
   if(cache.get('userInfo') && cache.get('loginInfo')){
     // debugger
     if(to.path==='/login') {
-      next('/')
+      next('/index')
     } else if(store.state.user.addRoutes.length<=0){
       store.dispatch('user/login', cache.get('loginInfo')).then(res=> {
         next({...to})

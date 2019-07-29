@@ -4,9 +4,15 @@
   "data": [
     {
       "name": "visitor",
-      "role": "visit",
+      "role": "visitor",
       "permission": {
-        "menu": []
+        "menu": [
+          "index",
+          "count-down",
+          "download",
+          "table",
+          "video-player"
+        ]
       }
     },
     {
