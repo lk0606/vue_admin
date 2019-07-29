@@ -15,6 +15,9 @@ export default {
     loginInfo: cache.get('loginInfo') ? cache.get('loginInfo') : null
   },
   mutations: {
+    accessRoutes() {
+
+    }
   },
   actions: {
     login({dispatch, commit, state}, loginInfo) {

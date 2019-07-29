@@ -25,6 +25,7 @@ export const addRoutes = [
   {
     path: '/components',
     name: 'components',
+    // redirect: '/components/count-down',
     component: layout,
     meta: {
       title: '组件',

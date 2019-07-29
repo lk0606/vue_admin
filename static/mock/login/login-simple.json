@@ -1,0 +1,54 @@
+{
+  "code": 200,
+  "info": "登录成功",
+  "data": [
+    {
+      "name": "visitor",
+      "role": "visitor",
+      "permission": {
+        "menu": [
+          "index",
+          "count-down",
+          "download",
+          "table",
+          "video-player",
+          "auth-config",
+          "auth-visitor"
+        ]
+      }
+    },
+    {
+      "name": "admin",
+      "role": "admin",
+      "permission": {
+        "menu": [
+          "index",
+          "count-down",
+          "download",
+          "table",
+          "video-player",
+          "auth-config",
+          "auth-visitor",
+          "auth-admin"
+        ]
+      }
+    },
+    {
+      "name": "superAdmin",
+      "role": "superAdmin",
+      "permission": {
+        "menu": [
+          "index",
+          "count-down",
+          "download",
+          "table",
+          "video-player",
+          "auth-config",
+          "auth-visitor",
+          "auth-admin",
+          "auth-super-admin"
+        ]
+      }
+    }
+  ]
+}
