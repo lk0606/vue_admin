@@ -11,7 +11,7 @@ Vue.use(Router)
 
 export const addRoutes = [
   {
-    path: '/index',
+    path: '/',
     name: 'index',
     component: layout,
     meta: {
