@@ -13,6 +13,8 @@ import store from './store'
 // ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+// Progress
+import 'nprogress/nprogress.css'
 Vue.use(ElementUI)
 
 // player
