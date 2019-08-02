@@ -11,23 +11,27 @@ function allRoleFilter(permObj) {
   if(isObject(permObj)){
     Object.keys(permObj).forEach(item=> {
       allRoleList.concat(partRoleFilter(permObj[item]))
+      console.log(partRoleFilter(permObj[item]), 'partRoleFilter')
     })
-  }  return allRoleList
+  }
+  console.log(allRoleList, 'allRoleList')
+  return allRoleList
 }
 
 
 function partRoleFilter(partPerm) {
+  let partRole
   if(Array.isArray(partPerm)){
-    return partPerm.map(item=> {
+    partRole = partPerm.map(item=> {
       if(item.children){
         partRoleFilter(item.children)
       } else {
         return item.path
       }
     })
-  } else {
-    new Error('part routers should be Array...')
   }
+  console.log(partRole, 'partRole')
+  return partRole
 }
 function accessRoutes() {
   return addRoutes.filter(routes=> {
@@ -41,7 +45,6 @@ function accessRoutes() {
       }
     })
   })
-
 }
 
 
@@ -84,13 +87,14 @@ export default {
             state.roleName = role
             state.permission = permission
 
-            // state.addRoutes = addRoutes
-            // router.addRoutes(addRoutes)
+            state.addRoutes = addRoutes
+            router.addRoutes(addRoutes)
             // 权限判定
-            debugger
-            allRoleFilter(state.permission)
-            state.addRoutes = accessRoutes()
-            router.addRoutes(state.addRoutes)
+            // debugger
+            allRoleFilter(permission)
+            console.log(accessRoutes(), 'accessRoutes()')
+            // state.addRoutes = accessRoutes()
+            // router.addRoutes(state.addRoutes)
 
             res.data = userInfo
             resolve(res)

@@ -41,10 +41,6 @@
       ...mapGetters('user', [
         'addRoutes'
       ])
-      // routers () {
-      //   console.log(this.$router.options.routes[0].children)
-      //   return this.$router.options.routes[0].children
-      // }
     },
     watch: {
     },
