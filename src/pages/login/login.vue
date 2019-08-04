@@ -66,7 +66,11 @@ export default {
   methods: {
     login() {
       this.$store.dispatch('user/login', this.loginForm).then(res=> {
-        this.$message.success(`${res.data[0].name}，${res.info}`)
+        this.$message({
+          type: 'success',
+          duration: 800,
+          message: `${res.data[0].name}，${res.info}`
+        })
         this.$router.push('/')
       }).catch(err=> {
         this.$message.error(err)

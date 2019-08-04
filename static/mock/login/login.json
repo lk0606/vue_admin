@@ -34,10 +34,6 @@
             "path": "auth",
             "children": [
               {
-                "name": "权限配置",
-                "path": "auth-config"
-              },
-              {
                 "name": "游客权限",
                 "path": "auth-visitor"
               }

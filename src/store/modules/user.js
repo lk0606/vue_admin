@@ -10,42 +10,39 @@ function allRoleFilter(permObj) {
   let allRoleList = []
   if(isObject(permObj)){
     Object.keys(permObj).forEach(item=> {
-      allRoleList.concat(partRoleFilter(permObj[item]))
-      console.log(partRoleFilter(permObj[item]), 'partRoleFilter')
+      allRoleList=allRoleList.concat(partRoleFilter(permObj[item]))
     })
   }
-  console.log(allRoleList, 'allRoleList')
+  // console.log(allRoleList, 'allRoleList')
   return allRoleList
 }
 
 
-function partRoleFilter(partPerm) {
-  let partRole
+function partRoleFilter(partPerm, partRole=[]) {
   if(Array.isArray(partPerm)){
-    partRole = partPerm.map(item=> {
+    for(let item of partPerm){
       if(item.children){
-        partRoleFilter(item.children)
-      } else {
-        return item.path
+        partRoleFilter(item.children, partRole)
       }
-    })
+      if(item.path) {
+        partRole.push(item.path)
+      }
+    }
   }
-  console.log(partRole, 'partRole')
   return partRole
 }
-function accessRoutes() {
-  return addRoutes.filter(routes=> {
-    allRoleFilter().forEach(role=> {
-      if(routes.children){
-        accessRoutes()
-      } else {
-        if(role===routes.path){
-          return routes
-        }
-      }
-    })
+function accessRoutes(addRoutes) {
+  console.log(partRoleFilter(addRoutes), 'partRoleFilter')
+  return addRoutes.filter(item=> {
+    if(partRoleFilter(addRoutes).includes(item.path)){
+      return item
+    }
+    if(item.children) {
+      return accessRoutes(item.children)
+    }
   })
 }
+// console.log(accessRoutes(addRoutes), 'accessRoutes(addRoutes)')
 
 
 export default {
@@ -73,11 +70,7 @@ export default {
       }
       return new Promise((resolve, reject) => {
         login(loginInfo).then(res=> {
-          const userInfo = res.data.filter(item=> {
-            if(loginInfo.name === item.name) {
-              return item
-            }
-          })
+          const userInfo = res.data.filter(item=> loginInfo.name === item.name)
           if(userInfo.length>0) {
             const {name, role, permission} = userInfo[0]
             // cache
@@ -87,14 +80,14 @@ export default {
             state.roleName = role
             state.permission = permission
 
-            state.addRoutes = addRoutes
-            router.addRoutes(addRoutes)
+            // state.addRoutes = addRoutes
+            // router.addRoutes(addRoutes)
             // 权限判定
             // debugger
             allRoleFilter(permission)
-            console.log(accessRoutes(), 'accessRoutes()')
-            // state.addRoutes = accessRoutes()
-            // router.addRoutes(state.addRoutes)
+            // console.log(accessRoutes(addRoutes), 'accessRoutes(addRoutes)')
+            state.addRoutes = accessRoutes(addRoutes)
+            router.addRoutes(state.addRoutes)
 
             res.data = userInfo
             resolve(res)
