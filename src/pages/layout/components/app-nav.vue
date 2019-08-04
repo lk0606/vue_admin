@@ -21,7 +21,11 @@
     methods: {
       logout() {
         this.$store.dispatch('user/logout').then(res=> {
-          this.$message.success(res)
+          this.$message({
+            type: 'success',
+            duration: 800,
+            message: `${res}`
+          })
           this.$router.push('/login')
         })
       }

@@ -13,10 +13,12 @@ import store from './store'
 // ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
 // Progress
 import 'nprogress/nprogress.css'
-Vue.use(ElementUI)
-
+// data deal
+// import _ from 'lodash'
+// Vue.prototype._ = _
 // player
 import VueVideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'

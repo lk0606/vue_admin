@@ -12,7 +12,7 @@ Vue.use(Router)
 export const addRoutes = [
   {
     path: '/',
-    name: 'index',
+    name: '/',
     component: layout,
     meta: {
       title: '首页',
@@ -134,8 +134,8 @@ export const addRoutes = [
         }
       },
       {
-        path: '/auth-superAdmin',
-        name: 'auth-superAdmin',
+        path: '/auth-super-admin',
+        name: 'auth-super-admin',
         component: ()=> import( '../pages/auth/auth-super-admin' ),
         meta: {
           title: 'superAdmin-权限',

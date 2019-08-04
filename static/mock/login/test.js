@@ -201,16 +201,16 @@ function getAllPath(tree, arr=[]) {
   return arr
 }
 console.log(getAllPath(tree), 'getAllPath(tree)')
-getAllPath(tree)
+// getAllPath(tree)
 // console.log(arr)
 let access=[]
-function add(addRoutes, arr=[]) {
+function add(addRoutes) {
   return addRoutes.filter(item=> {
-    if(arr.includes(item.path)){
+    if(getAllPath(tree).includes(item.name)){
       return item
     }
-    else if(item.children){
-     return add(item.children, arr)
+    if(item.children){
+     return item.children=add(item.children)
     }
   })
 }
@@ -223,4 +223,4 @@ function getAll() {
   })
   return all
 }
-console.log(getAll(), 'all')
+// console.log(getAll(), 'all')

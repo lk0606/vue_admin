@@ -20,6 +20,10 @@
                 "path": "count-down"
               },
               {
+                "name": "下载",
+                "path": "download"
+              },
+              {
                 "name": "表格",
                 "path": "table"
               },
@@ -60,6 +64,10 @@
                 "path": "count-down"
               },
               {
+                "name": "下载",
+                "path": "download"
+              },
+              {
                 "name": "表格",
                 "path": "table"
               },
@@ -83,7 +91,7 @@
               },
               {
                 "name": "管理权限",
-                "path": "admin-visitor"
+                "path": "auth-admin"
               }
             ]
           }
@@ -108,6 +116,10 @@
                 "path": "count-down"
               },
               {
+                "name": "下载",
+                "path": "download"
+              },
+              {
                 "name": "表格",
                 "path": "table"
               },
@@ -131,11 +143,11 @@
               },
               {
                 "name": "管理权限",
-                "path": "admin-visitor"
+                "path": "auth-admin"
               },
               {
                 "name": "超管权限",
-                "path": "super-admin-visitor"
+                "path": "auth-super-admin"
               }
             ]
           }

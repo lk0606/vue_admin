@@ -1,4 +1,5 @@
 
+import _ from 'lodash'
 import router, { addRoutes, resetRouter } from "../../router"
 // utils
 import cache from '../../utils/cache'
@@ -10,11 +11,11 @@ function allRoleFilter(permObj) {
   let allRoleList = []
   if(isObject(permObj)){
     Object.keys(permObj).forEach(item=> {
-      console.log(partRoleFilter(permObj[item]), '部分权限')
+      // console.log(partRoleFilter(permObj[item]), '部分权限')
       allRoleList=allRoleList.concat(partRoleFilter(permObj[item]))
     })
   }
-  console.log(allRoleList, '所有权限')
+  // console.log(allRoleList, '所有权限')
   return allRoleList
 }
 
@@ -32,19 +33,19 @@ function partRoleFilter(partPerm, partRole=[]) {
   }
   return partRole
 }
-function accessRoutes(addRoutes) {
-  // debugger
-  // console.log(partRoleFilter(addRoutes), 'partRoleFilter')
-  return addRoutes.filter(item=> {
-    if(partRoleFilter(addRoutes).includes(item.path)){
-      return item
+function accessRoutes(addRoutes, permission) {
+  let arr = addRoutes.filter(item=> {
+    if(allRoleFilter(permission).includes(item.name)){
+      if(item.children && item.children.length) {
+        item.children = accessRoutes(item.children, permission)
+      }
+      return true
     }
-    if(item.children) {
-      return accessRoutes(item.children)
-    }
+    return false
   })
+  console.log(arr, 'arr')
+  return arr
 }
-// console.log(accessRoutes(addRoutes), 'accessRoutes(addRoutes)')
 
 
 export default {
@@ -85,10 +86,8 @@ export default {
             // state.addRoutes = addRoutes
             // router.addRoutes(addRoutes)
             // 权限判定
-            // debugger
-            allRoleFilter(permission)
-            // console.log(accessRoutes(addRoutes), 'accessRoutes(addRoutes)')
-            state.addRoutes = accessRoutes(addRoutes)
+            // console.log(accessRoutes(addRoutes, permission), 'accessRoutes(permission)')
+            state.addRoutes = accessRoutes(addRoutes, permission)
             router.addRoutes(state.addRoutes)
 
             res.data = userInfo
