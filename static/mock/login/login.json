@@ -9,7 +9,7 @@
         "menu": [
           {
             "name": "首页",
-            "path": "index"
+            "path": "/"
           },
           {
             "name": "组件",
@@ -49,7 +49,7 @@
         "menu": [
           {
             "name": "首页",
-            "path": "index"
+            "path": "/"
           },
           {
             "name": "组件",
@@ -97,7 +97,7 @@
         "menu": [
           {
             "name": "首页",
-            "path": "index"
+            "path": "/"
           },
           {
             "name": "组件",

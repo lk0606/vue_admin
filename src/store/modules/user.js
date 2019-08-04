@@ -10,10 +10,11 @@ function allRoleFilter(permObj) {
   let allRoleList = []
   if(isObject(permObj)){
     Object.keys(permObj).forEach(item=> {
+      console.log(partRoleFilter(permObj[item]), '部分权限')
       allRoleList=allRoleList.concat(partRoleFilter(permObj[item]))
     })
   }
-  // console.log(allRoleList, 'allRoleList')
+  console.log(allRoleList, '所有权限')
   return allRoleList
 }
 
@@ -32,7 +33,8 @@ function partRoleFilter(partPerm, partRole=[]) {
   return partRole
 }
 function accessRoutes(addRoutes) {
-  console.log(partRoleFilter(addRoutes), 'partRoleFilter')
+  // debugger
+  // console.log(partRoleFilter(addRoutes), 'partRoleFilter')
   return addRoutes.filter(item=> {
     if(partRoleFilter(addRoutes).includes(item.path)){
       return item
