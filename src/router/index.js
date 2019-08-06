@@ -25,7 +25,6 @@ export const addRoutes = [
   {
     path: '/components',
     name: 'components',
-    // redirect: '/components/count-down',
     component: layout,
     meta: {
       title: '组件',
@@ -141,6 +140,32 @@ export const addRoutes = [
           title: 'superAdmin-权限',
           // icon: 'lock',
           role: 'superAdmin',
+          // cache: false,
+          // hidden: false,
+        }
+      },
+    ]
+  },
+  {
+    path: '/test',
+    name: 'test',
+    component: layout,
+    meta: {
+      title: '测试',
+      icon: 'lock',
+      role: '',
+      // cache: false,
+      // hidden: false,
+    },
+    children: [
+      {
+        path: '/test1',
+        name: 'test1',
+        component: ()=> import( '../pages/test/test' ),
+        meta: {
+          title: 'test',
+          // icon: 'lock',
+          role: '',
           // cache: false,
           // hidden: false,
         }

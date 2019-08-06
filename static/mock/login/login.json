@@ -150,6 +150,16 @@
                 "path": "auth-super-admin"
               }
             ]
+          },
+          {
+            "name": "测试",
+            "path": "test",
+            "children": [
+              {
+                "name": "test1",
+                "path": "test1"
+              }
+            ]
           }
         ]
       }

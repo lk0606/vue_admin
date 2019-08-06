@@ -14,12 +14,17 @@
       :filter-node-method="filterNode"
       ref="tree">
     </el-tree>
+    <tinymce></tinymce>
   </div>
 </template>
 
 <script>
+  import tinymce from '../../components/tinymce/richText'
   export default {
     name: 'test',
+    components: {
+      tinymce
+    },
     watch: {
       filterText(val) {
         this.$refs.tree.filter(val);
