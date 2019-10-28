@@ -29,6 +29,14 @@ Vue.config.productionTip = false
 
 import './permission'
 
+// mixins
+import { isObject } from "./utils/data-type-check";
+Vue.mixin({
+  methods: {
+    isObject
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

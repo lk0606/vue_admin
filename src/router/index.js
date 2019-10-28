@@ -170,6 +170,18 @@ export const addRoutes = [
           // hidden: false,
         }
       },
+      {
+        path: '/tree',
+        name: 'tree',
+        component: ()=> import( '../pages/test/tree.vue' ),
+        meta: {
+          title: 'tree',
+          // icon: 'lock',
+          role: '',
+          // cache: false,
+          // hidden: false,
+        }
+      },
     ]
   },
   { path: '*', redirect: '/404', hidden: true }

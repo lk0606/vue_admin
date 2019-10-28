@@ -158,6 +158,10 @@
               {
                 "name": "test1",
                 "path": "test1"
+              },
+              {
+                "name": "tree",
+                "path": "tree"
               }
             ]
           }
