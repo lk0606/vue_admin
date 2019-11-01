@@ -10,7 +10,7 @@ export default {
   name: 'App',
   methods: {
     initTitle() {
-      document.title = this.$route.meta.title
+      document.title = `后台管理-${ this.$route.meta.title ? this.$route.meta.title : ''}`
     }
   },
   watch: {

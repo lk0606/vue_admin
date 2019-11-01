@@ -112,6 +112,10 @@
             "path": "components",
             "children": [
               {
+                "name": "图片压缩",
+                "path": "canvas-compress"
+              },
+              {
                 "name": "倒计时",
                 "path": "count-down"
               },

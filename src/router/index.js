@@ -35,6 +35,18 @@ export const addRoutes = [
     },
     children: [
       {
+        path: '/canvas-compress',
+        name: 'canvas-compress',
+        component: ()=> import( '../components/canvas-compress' ),
+        meta: {
+          title: '图片压缩',
+          icon: 'scissors',
+          role: '',
+          // cache: false,
+          // hidden: false,
+        },
+      },
+      {
         path: '/count-down',
         name: 'count-down',
         component: ()=> import( '../components/count-down' ),
