@@ -7,9 +7,10 @@ import './styles/element-reset.scss'
 import 'normalize.css'
 // vue series
 import Vue from 'vue'
+// @ts-ignore
 import App from './App'
-import router from './router'
-import store from './store'
+import router from './router/index'
+import store from './store/index'
 // ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'

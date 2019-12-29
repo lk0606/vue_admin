@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "rename": "ts-node renameJS.ts"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -23,8 +24,12 @@
     "vuex": "^3.1.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-typescript": "^7.7.3",
+    "@types/shelljs": "^0.8.6",
     "autoprefixer": "^7.1.2",
-    "babel-core": "^6.22.1",
+    "babel-core": "^7.0.0-0",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-syntax-jsx": "^6.18.0",
@@ -51,7 +56,9 @@
     "rimraf": "^2.6.0",
     "sass-loader": "^7.1.0",
     "semver": "^5.3.0",
-    "shelljs": "^0.7.6",
+    "shelljs": "^0.7.8",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4",
     "uglifyjs-webpack-plugin": "^1.1.1",
     "url-loader": "^0.5.8",
     "vue-loader": "^13.3.0",

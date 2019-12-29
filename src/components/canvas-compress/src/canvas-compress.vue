@@ -56,6 +56,7 @@
                             const base64 = e.target.result
                             const url = this.compressImg(base64)
                             urls.push(url)
+                            console.log(originUrl, url, 'originUrl')
                         }
                     }
                 })
@@ -81,6 +82,7 @@
                 console.log(e.target.files, 'handleChange')
                 const files = e.target.files
                 const { originUrls, urls } = this.getBase64(files)
+                console.log(originUrls, urls, 'originUrls, urls')
                 this.urls = urls
                 this.originUrls = originUrls
             }

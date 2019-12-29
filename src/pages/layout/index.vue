@@ -71,7 +71,7 @@ export default {
     },
     getBreadcrumb() {
       this.routerList = this.$route.matched.filter(item => item.name)
-      console.log(this.routerList, 'this.routerList')
+      // console.log(this.routerList, 'this.routerList')
     }
   },
   created() {

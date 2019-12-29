@@ -43,7 +43,7 @@ function accessRoutes(addRoutes, permission) {
     }
     return false
   })
-  console.log(arr, 'arr')
+  // console.log(arr, 'arr')
   return arr
 }
 
