@@ -1,2 +1,2 @@
 
-export { default } from './src/canvas-compress'
+export { default } from './src/canvas-compress.vue'

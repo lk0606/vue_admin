@@ -1,4 +1,4 @@
-
+// @ts-ignore
 import router, { constantRouter } from '../router/index'
 
 import { user } from './modules'

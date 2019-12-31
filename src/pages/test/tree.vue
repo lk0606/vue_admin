@@ -80,9 +80,9 @@
 
   </div>
 </template>
-<script>
+<script lang="ts">
 import { VueTreeList, Tree, TreeNode } from 'vue-tree-list'
-import promoData from './promotionDemo.js'
+import promoData from './promotionDemo'
 
 export default {
   name:"setPromotion",

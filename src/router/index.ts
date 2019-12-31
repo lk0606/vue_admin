@@ -5,7 +5,7 @@ import cache from '../utils/cache'
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import layout from '../pages/layout/index'
+import layout from '../pages/layout/index.vue'
 
 Vue.use(Router)
 
@@ -49,7 +49,7 @@ export const addRoutes = [
       {
         path: '/count-down',
         name: 'count-down',
-        component: ()=> import( '../components/count-down' ),
+        component: ()=> import( '../components/count-down.vue' ),
         meta: {
           title: '倒计时',
           icon: 'alarm-clock',
@@ -61,7 +61,7 @@ export const addRoutes = [
       {
         path: '/download',
         name: 'download',
-        component: ()=> import( '../components/download' ),
+        component: ()=> import( '../components/download.vue' ),
         meta: {
           title: '下载',
           icon: 'download',
@@ -73,7 +73,7 @@ export const addRoutes = [
       {
         path: '/table',
         name: 'table',
-        component: ()=> import( '../components/table' ),
+        component: ()=> import( '../components/table/index.vue' ),
         meta: {
           title: '表格',
           icon: 's-grid',
@@ -85,7 +85,7 @@ export const addRoutes = [
       {
         path: '/video-player',
         name: 'video-player',
-        component: ()=> import( '../components/video-player' ),
+        component: ()=> import( '../components/video-player.vue' ),
         meta: {
           title: 'vue-player',
           icon: 'video-camera',
@@ -111,7 +111,7 @@ export const addRoutes = [
       {
         path: '/auth-config',
         name: 'auth-config',
-        component: ()=> import( '../pages/auth/auth-config' ),
+        component: ()=> import( '../pages/auth/auth-config.vue' ),
         meta: {
           title: '权限配置',
           // icon: 'lock',
@@ -123,7 +123,7 @@ export const addRoutes = [
       {
         path: '/auth-visitor',
         name: 'auth-visitor',
-        component: ()=> import( '../pages/auth/auth-visitor' ),
+        component: ()=> import( '../pages/auth/auth-visitor.vue' ),
         meta: {
           title: 'visitor-权限',
           // icon: 'lock',
@@ -135,7 +135,7 @@ export const addRoutes = [
       {
         path: '/auth-admin',
         name: 'auth-admin',
-        component: ()=> import( '../pages/auth/auth-admin' ),
+        component: ()=> import( '../pages/auth/auth-admin.vue' ),
         meta: {
           title: 'admin-权限',
           // icon: 'lock',
@@ -147,7 +147,7 @@ export const addRoutes = [
       {
         path: '/auth-super-admin',
         name: 'auth-super-admin',
-        component: ()=> import( '../pages/auth/auth-super-admin' ),
+        component: ()=> import( '../pages/auth/auth-super-admin.vue' ),
         meta: {
           title: 'superAdmin-权限',
           // icon: 'lock',
@@ -173,7 +173,7 @@ export const addRoutes = [
       {
         path: '/test1',
         name: 'test1',
-        component: ()=> import( '../pages/test/test' ),
+        component: ()=> import( '../pages/test/test.vue' ),
         meta: {
           title: 'test',
           // icon: 'lock',
@@ -182,18 +182,18 @@ export const addRoutes = [
           // hidden: false,
         }
       },
-      {
-        path: '/tree',
-        name: 'tree',
-        component: ()=> import( '../pages/test/tree.vue' ),
-        meta: {
-          title: 'tree',
-          // icon: 'lock',
-          role: '',
-          // cache: false,
-          // hidden: false,
-        }
-      },
+      // {
+      //   path: '/tree',
+      //   name: 'tree',
+      //   component: ()=> import( '../pages/test/tree.vue' ),
+      //   meta: {
+      //     title: 'tree',
+      //     // icon: 'lock',
+      //     role: '',
+      //     // cache: false,
+      //     // hidden: false,
+      //   }
+      // },
     ]
   },
   { path: '*', redirect: '/404', hidden: true }
@@ -203,7 +203,7 @@ export const addRoutes = [
 const whiteList = [
   // { path: '/', name: 'index', component: ()=> import( '../pages/layout/index' ) },
   {
-    path: '/login', name: 'login', component: ()=> import( '../pages/login/login' ),
+    path: '/login', name: 'login', component: ()=> import( '../pages/login/login.vue' ),
     meta: {
       title: '后台管理-登录',
       icon: '',
@@ -213,7 +213,7 @@ const whiteList = [
     },
   },
   {
-    path: '/404', name: '404', component: ()=> import( '../pages/error/404' ),
+    path: '/404', name: '404', component: ()=> import( '../pages/error/404.vue' ),
     meta: {
       title: '错误',
       icon: '',
@@ -226,7 +226,7 @@ const whiteList = [
 
 export const menu = [
 
-  { path: '/test', name: 'test', component: ()=> import( '../pages/test/test' ) },
+  { path: '/test', name: 'test', component: ()=> import( '../pages/test/test.vue' ) },
   // {
   //   path: '/login',
   //   name: 'login',
@@ -245,6 +245,6 @@ const router = createRouter()
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
   const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
+  // router.matcher = newRouter.matcher // reset router
 }
 export default router

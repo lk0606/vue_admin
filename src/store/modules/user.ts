@@ -51,14 +51,14 @@ function accessRoutes(addRoutes, permission) {
 export default {
   namespaced: true,
   state: {
-    // name: '',
-    // roleName: '',
-    // permission: [],
-    // loginInfo: null,
-    name: cache.get('userInfo') ? cache.get('userInfo').name : '', // user name
-    roleName: cache.get('userInfo') ? cache.get('userInfo').role : '', // role name
-    permission: cache.get('userInfo') ? cache.get('userInfo').permission : {}, //
-    loginInfo: cache.get('loginInfo') ? cache.get('loginInfo') : null, // name and pass
+    name: '',
+    roleName: '',
+    permission: [],
+    loginInfo: null,
+    // name: cache.get('userInfo') ? cache.get('userInfo').name : '', // user name
+    // roleName: cache.get('userInfo') ? cache.get('userInfo').role : '', // role name
+    // permission: cache.get('userInfo') ? cache.get('userInfo').permission : {}, //
+    // loginInfo: cache.get('loginInfo') ? cache.get('loginInfo') : null, // name and pass
     addRoutes: [], // 动态路由挂载列表
     roleList: [], // 可用权限列表
   },

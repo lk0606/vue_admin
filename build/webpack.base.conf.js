@@ -23,7 +23,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json', 'ts'],
+    extensions: ['.js', '.vue', '.json', '.ts'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
@@ -37,9 +37,14 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
-        test: /\.([jt])s$/,
+        test: /\.(j)s$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('constant-router.vue'), resolve('node_modules/webpack-dev-server/client')]
+      },
+      {
+        test: /\.(t)s$/,
+        loader: 'ts-loader',
+        include: [resolve('src')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
