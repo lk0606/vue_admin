@@ -24,16 +24,14 @@ export default {
         endTime,
         timer = null
 
-      // @ts-ignore
-        if(this.disabled && cache.get('refreshEndTime')<new Date().getTime()) {
+        if(this.disabled && +cache.get('refreshEndTime')<new Date().getTime()) {
         this.count = sec
         this.refreshEndTime = now + 1000 * sec
         endTime = now + 1000 * sec
         cache.set('endTime', endTime)
       } else {
         this.refreshEndTime = cache.get('refreshEndTime')
-        // @ts-ignore
-            this.count = Math.ceil( (cache.get('refreshEndTime')-new Date().getTime() ) / 1000)
+            this.count = Math.ceil( (+cache.get('refreshEndTime')-new Date().getTime() ) / 1000)
       }
 
 
@@ -45,8 +43,7 @@ export default {
             this.count = 0
             clearInterval(timer)
           } else {
-            // @ts-ignore
-              this.count = Math.ceil( (cache.get('endTime')-new Date().getTime() ) / 1000)
+              this.count = Math.ceil( (+cache.get('endTime')-new Date().getTime() ) / 1000)
             if(this.count<=0) {
               this.count = 0
               clearInterval(timer)

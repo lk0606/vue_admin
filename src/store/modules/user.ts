@@ -7,6 +7,21 @@ import { isObject } from "../../utils/data-type-check"
 // api
 import { login } from "../../api/login"
 
+
+function partRoleFilter(partPerm, partRole=[]) {
+    if(Array.isArray(partPerm)){
+        for(let item of partPerm){
+            if(item.children){
+                partRoleFilter(item.children, partRole)
+            }
+            if(item.path) {
+                partRole.push(item.path)
+            }
+        }
+    }
+    return partRole
+}
+
 function allRoleFilter(permObj) {
   let allRoleList = []
   if(isObject(permObj)){
@@ -19,20 +34,6 @@ function allRoleFilter(permObj) {
   return allRoleList
 }
 
-
-function partRoleFilter(partPerm, partRole=[]) {
-  if(Array.isArray(partPerm)){
-    for(let item of partPerm){
-      if(item.children){
-        partRoleFilter(item.children, partRole)
-      }
-      if(item.path) {
-        partRole.push(item.path)
-      }
-    }
-  }
-  return partRole
-}
 function accessRoutes(addRoutes, permission) {
   let arr = addRoutes.filter(item=> {
     if(allRoleFilter(permission).includes(item.name)){
@@ -46,7 +47,14 @@ function accessRoutes(addRoutes, permission) {
   // console.log(arr, 'arr')
   return arr
 }
-
+export interface UseState {
+    name: string
+    roleName: string
+    permission: object | undefined
+    loginInfo: string | null
+    addRoutes: any[] | null
+    roleList: any[] | null
+}
 
 export default {
   namespaced: true,
@@ -61,7 +69,7 @@ export default {
     // loginInfo: cache.get('loginInfo') ? cache.get('loginInfo') : null, // name and pass
     addRoutes: [], // 动态路由挂载列表
     roleList: [], // 可用权限列表
-  },
+  } as UseState,
   mutations: {
   },
   actions: {

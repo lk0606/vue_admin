@@ -1,5 +1,5 @@
-// @ts-ignore
-import fetch from '@/utils/fetch';
+
+import fetch from '@/utils/fetch'
 const ossUrl = process.env.OSS_URL
 export default {
     /* 添加产品退保配置 */

@@ -1,5 +1,4 @@
-// @ts-ignore
-import router, { constantRouter } from '../router/index'
+
 
 import { user } from './modules'
 
@@ -10,7 +9,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
 
-  },
+  } as any,
   mutations: {
 
   },

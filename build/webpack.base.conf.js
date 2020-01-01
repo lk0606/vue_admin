@@ -37,15 +37,15 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
-        test: /\.(j)s$/,
+        test: /\.([jt])s$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('constant-router.vue'), resolve('node_modules/webpack-dev-server/client')]
       },
-      {
-        test: /\.(t)s$/,
-        loader: 'ts-loader',
-        include: [resolve('src')]
-      },
+      // {
+      //   test: /\.(t)s$/,
+      //   loader: 'ts-loader',
+      //   include: [resolve('src')]
+      // },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
