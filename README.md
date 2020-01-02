@@ -1,6 +1,6 @@
 # vue_admin
 
-> A Vue.js project
+> A Vue.js project, required node 11.x
 
 ## Build Setup
 

@@ -50,23 +50,29 @@ function accessRoutes(addRoutes, permission) {
 export interface UseState {
     name: string
     roleName: string
-    permission: object | undefined
-    loginInfo: string | null
-    addRoutes: any[] | null
-    roleList: any[] | null
+    permission: object
+    loginInfo: string
+    addRoutes: any[]
+    roleList: any[]
+}
+
+export interface Login {
+    code: number
+    info: string
+    data: any[]
 }
 
 export default {
   namespaced: true,
   state: {
-    name: '',
-    roleName: '',
-    permission: [],
-    loginInfo: null,
-    // name: cache.get('userInfo') ? cache.get('userInfo').name : '', // user name
-    // roleName: cache.get('userInfo') ? cache.get('userInfo').role : '', // role name
-    // permission: cache.get('userInfo') ? cache.get('userInfo').permission : {}, //
-    // loginInfo: cache.get('loginInfo') ? cache.get('loginInfo') : null, // name and pass
+    // name: '',
+    // roleName: '',
+    // permission: [],
+    // loginInfo: null,
+    name: cache.get('userInfo') ? cache.get('userInfo').name : '', // user name
+    roleName: cache.get('userInfo') ? cache.get('userInfo').role : '', // role name
+    permission: cache.get('userInfo') ? cache.get('userInfo').permission : {}, //
+    loginInfo: cache.get('loginInfo') ? cache.get('loginInfo') : null, // name and pass
     addRoutes: [], // 动态路由挂载列表
     roleList: [], // 可用权限列表
   } as UseState,
@@ -81,7 +87,9 @@ export default {
       }
       return new Promise((resolve, reject) => {
         login(loginInfo).then(res=> {
+            console.log(res, 'res login')
           const userInfo = res.data.filter(item=> loginInfo.name === item.name)
+          // const userInfo = (res as Login).data.filter(item=> loginInfo.name === item.name)
           if(userInfo.length>0) {
             const {name, role, permission} = userInfo[0]
             // cache
@@ -96,6 +104,7 @@ export default {
             // 权限判定
             // console.log(accessRoutes(addRoutes, permission), 'accessRoutes(permission)')
             state.addRoutes = accessRoutes(addRoutes, permission)
+            console.log(state.addRoutes, 'state.addRoutes')
             router.addRoutes(state.addRoutes)
 
             res.data = userInfo

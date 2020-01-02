@@ -34,9 +34,10 @@ service.interceptors.request.use(
     // config.headers['Authorization'] = 'Admin-Token'
     // do something before request is sent
     return config
-  }, error => {
+  }, err => {
     // do something with request error
-    return Promise.reject(error)
+    // return Promise.reject(err)
+    return err
   }
 )
 // 响应拦截器
@@ -46,12 +47,13 @@ service.interceptors.response.use(res => {
       // debugger
       return res;
     }
-    return Promise.resolve(res.data)
-    // return res
+    // return Promise.resolve(res.data)
+    return res.data
   },
   err => {
     console.log(err, 'err')
-    return Promise.reject(err)
+    // return Promise.reject(err)
+    return err
   }
 )
 export default service

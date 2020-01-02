@@ -1,7 +1,7 @@
 
 import request from '../utils/request'
 
-export interface Login<T> {
+export interface Login {
     code: number
     info: string
     data: object
