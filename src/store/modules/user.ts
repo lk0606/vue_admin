@@ -5,7 +5,7 @@ import router, { addRoutes, resetRouter } from "../../router"
 import cache from '../../utils/cache'
 import { isObject } from "../../utils/data-type-check"
 // api
-import { login } from "../../api/login"
+import {login} from "../../api/login"
 
 
 function partRoleFilter(partPerm, partRole=[]) {
@@ -55,7 +55,6 @@ export interface UseState {
     addRoutes: any[]
     roleList: any[]
 }
-
 export interface Login {
     code: number
     info: string
@@ -86,10 +85,9 @@ export default {
         state.loginInfo = loginInfo
       }
       return new Promise((resolve, reject) => {
-        login(loginInfo).then(res=> {
-            console.log(res, 'res login')
+        login<Login>(loginInfo).then(res=> {
+            console.log(res)
           const userInfo = res.data.filter(item=> loginInfo.name === item.name)
-          // const userInfo = (res as Login).data.filter(item=> loginInfo.name === item.name)
           if(userInfo.length>0) {
             const {name, role, permission} = userInfo[0]
             // cache
