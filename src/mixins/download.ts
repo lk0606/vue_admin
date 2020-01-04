@@ -8,7 +8,7 @@ export default {
     }
   },
   methods: {
-    download(data, url, method) {
+    download(data: object, url: string, method: string) {
       return fetch({
         url: url || '/api',
         method: method ||'post',

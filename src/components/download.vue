@@ -12,8 +12,8 @@
          {{count<=0? '获取验证码' : `${count}s后获取`}}
        </el-button>
      </el-form-item>
-     
-     
+
+
      <el-form-item label="fetch获取脚本">
        <el-button
          @click="getArea"
@@ -31,7 +31,7 @@
 <script>
   import downloadMixin from '../mixins/download'
   import countDownMixin from '../mixins/countDown'
-  
+
   export default {
     name: 'download',
     components: {},
@@ -83,11 +83,11 @@
         }).catch(err=> {
           console.log(err, 'getArea err')
         })
-        
+
       },
       getData() {
         this.disabled = true
-        this.countDown(60, 'download')
+        this.countDown(60)
       },
     },
     created() {

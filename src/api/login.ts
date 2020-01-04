@@ -1,11 +1,6 @@
 
-import request, {  } from '../utils/request'
-
-export interface Login {
-    code: number
-    info: string
-    data: LoginData[]
-}
+import request, { Res } from '../utils/request'
+import { AxiosPromise, AxiosResponse } from 'axios'
 
 export interface LoginData {
     name: string,
@@ -13,12 +8,8 @@ export interface LoginData {
     permission: any[]
 }
 
-export interface LoginApi {
-    data: any[]
-}
-
-export function login<T>(params: object) {
-  return request({
+export function login(params: object): AxiosPromise<LoginData[]> {
+    return request({
     url: '/login/login.json',
     method: 'get',
     params

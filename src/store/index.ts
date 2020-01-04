@@ -3,7 +3,7 @@
 import { user } from './modules'
 
 import Vue from 'vue'
-import Vuex from 'vuex'
+import Vuex, { StoreOptions } from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({

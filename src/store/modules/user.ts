@@ -55,11 +55,6 @@ export interface UseState {
     addRoutes: any[]
     roleList: any[]
 }
-export interface Login {
-    code: number
-    info: string
-    data: any[]
-}
 
 export default {
   namespaced: true,
@@ -78,15 +73,15 @@ export default {
   mutations: {
   },
   actions: {
-    login({dispatch, commit, state}, loginInfo) {
+    login({ state }, loginInfo) {
 
       if(loginInfo) {
         cache.set('loginInfo', loginInfo)
         state.loginInfo = loginInfo
       }
       return new Promise((resolve, reject) => {
-        login<Login>(loginInfo).then(res=> {
-            console.log(res)
+        login(loginInfo).then(res=> {
+            // console.log(res.data, 'res login')
           const userInfo = res.data.filter(item=> loginInfo.name === item.name)
           if(userInfo.length>0) {
             const {name, role, permission} = userInfo[0]
@@ -102,7 +97,7 @@ export default {
             // 权限判定
             // console.log(accessRoutes(addRoutes, permission), 'accessRoutes(permission)')
             state.addRoutes = accessRoutes(addRoutes, permission)
-            console.log(state.addRoutes, 'state.addRoutes')
+            // console.log(state.addRoutes, 'state.addRoutes')
             router.addRoutes(state.addRoutes)
 
             res.data = userInfo

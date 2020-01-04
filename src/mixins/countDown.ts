@@ -1,15 +1,21 @@
 import cache from '../utils/cache'
 
+interface CountDown {
+    count: number
+    refreshEndTime: number | null
+    disabled: boolean
+}
+
 export default {
   data() {
     return {
       count: 0, // 计时器
       refreshEndTime: null, // 刷新页面时记录结束时间
       disabled: false,
-    }
+    } as CountDown
   },
   watch: {
-    refreshEndTime(refreshEndTime) {
+    refreshEndTime(refreshEndTime: number) {
       cache.set('refreshEndTime', refreshEndTime)
     },
   },
@@ -22,7 +28,7 @@ export default {
       let
         now = new Date().getTime(),
         endTime,
-        timer = null
+        timer:Function | null = null
 
         if(this.disabled && +cache.get('refreshEndTime')<new Date().getTime()) {
         this.count = sec
