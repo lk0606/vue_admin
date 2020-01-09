@@ -8,7 +8,7 @@ import { isObject } from "../../utils/data-type-check"
 import {login} from "../../api/login"
 
 
-function partRoleFilter(partPerm, partRole=[]) {
+function partRoleFilter(partPerm: any[], partRole=[]) {
     if(Array.isArray(partPerm)){
         for(let item of partPerm){
             if(item.children){
@@ -34,7 +34,7 @@ function allRoleFilter(permObj) {
   return allRoleList
 }
 
-function accessRoutes(addRoutes, permission) {
+function accessRoutes(addRoutes: any[], permission: any[]) {
   let arr = addRoutes.filter(item=> {
     if(allRoleFilter(permission).includes(item.name)){
       if(item.children && item.children.length) {
@@ -81,7 +81,7 @@ export default {
       }
       return new Promise((resolve, reject) => {
         login(loginInfo).then(res=> {
-            // console.log(res.data, 'res login')
+            console.log(res, 'res login')
           const userInfo = res.data.filter(item=> loginInfo.name === item.name)
           if(userInfo.length>0) {
             const {name, role, permission} = userInfo[0]

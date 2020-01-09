@@ -2,7 +2,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import qs from 'qs'
 
-export interface Res<T = any> extends AxiosResponse{
+export interface Res<T = any> {
     code: number
     info: string
     data: T
@@ -49,7 +49,7 @@ service.interceptors.request.use(
   }
 )
 // 响应拦截器
-service.interceptors.response.use((res: AxiosResponse<Res>): AxiosResponse<Res> => {
+service.interceptors.response.use((res: AxiosResponse<any>): AxiosResponse<object> => {
     console.log(res, 'res')
     // if(res.headers['content-type'] === 'video/mp4'){
     //   // debugger
