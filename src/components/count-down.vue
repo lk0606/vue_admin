@@ -8,17 +8,28 @@
       >
         {{count<=0? '获取验证码' : `${count}s后获取`}}
       </el-button>
+      <el-button
+        @click="getAuthCode"
+        :disabled="countDownInfo.count>0"
+      >
+        {{`重写获取验证码${countDownInfo.count >0 ? countDownInfo.count : ''}`}}
+      </el-button>
     </div>
   </div>
 </template>
 
 <script>
   import cache from '@/utils/cache'
+  import { getAuthCode } from '@/utils/tools.ts'
 
   export default {
     data() {
       return {
         count: 0, // 计时器
+        countDownInfo: {
+            count: 0,
+            endTimeKey: ''
+        }, // 计时器
         refreshEndTime: null, // 刷新页面时记录结束时间
         disabled: false,
       }
@@ -27,8 +38,29 @@
       refreshEndTime(refreshEndTime) {
         cache.set('refreshEndTime', refreshEndTime)
       },
+        // countDownInfo: {
+          // handler(countDownInfo) {
+          //     if(countDownInfo.hasOwnProperty('count')) {
+          //         this.getAuthCode()
+          //         console.log(countDownInfo, 'countDownInfo')
+          //     }
+          // }
+        // }
     },
     methods: {
+        timeFn() {
+          let count = 0
+          setInterval(()=> {
+             return count++
+          }, 1000)
+        },
+        getAuthCode() {
+            getAuthCode(10, 1).then(countDownInfo=> {
+                this.countDownInfo = countDownInfo
+                console.log(this.countDownInfo, 'getAuthCode')
+            })
+            // console.log(this.timeFn(), 'timeFn')
+        },
       getData() {
         this.disabled = true
         this.countDown()

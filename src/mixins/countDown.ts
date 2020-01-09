@@ -30,7 +30,8 @@ export default {
         now = new Date().getTime(),
         endTime,
         timer: NodeJS.Timeout = setInterval(() => {console.log('声明定时器')}, 300)
-        // console.log(timer)
+        // timer: NodeJS.Timeout
+        // console.log(timer, 'timer')
         if(this.disabled && +cache.get('refreshEndTime')<new Date().getTime()) {
         this.count = sec
         this.refreshEndTime = now + 1000 * sec
