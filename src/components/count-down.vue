@@ -9,8 +9,8 @@
         {{count<=0? '获取验证码' : `${count}s后获取`}}
       </el-button>
       <el-button
+          id="button"
         @click="getAuthCode"
-        :disabled="countDownInfo.count>0"
       >
         {{`重写获取验证码${countDownInfo.count >0 ? countDownInfo.count : ''}`}}
       </el-button>
@@ -20,7 +20,7 @@
 
 <script>
   import cache from '@/utils/cache'
-  import { getAuthCode } from '@/utils/tools.ts'
+  import { getAuthCode, getCode, CountDown } from '@/utils/tools.js'
 
   export default {
     data() {
@@ -38,14 +38,12 @@
       refreshEndTime(refreshEndTime) {
         cache.set('refreshEndTime', refreshEndTime)
       },
-        // countDownInfo: {
-          // handler(countDownInfo) {
-          //     if(countDownInfo.hasOwnProperty('count')) {
-          //         this.getAuthCode()
-          //         console.log(countDownInfo, 'countDownInfo')
-          //     }
-          // }
-        // }
+        countDownInfo: {
+          handler(countDownInfo) {
+
+          },
+          deep: true
+        }
     },
     methods: {
         timeFn() {
@@ -54,12 +52,22 @@
              return count++
           }, 1000)
         },
-        getAuthCode() {
-            getAuthCode(10, 1).then(countDownInfo=> {
+        async getAuthCode() {
+            const dom = document.querySelector('#button')
+            // for(let i = 0; i<10; i++) {
+            //     await getCode(10, 1, dom).then(countDownInfo=> {
+            //         this.countDownInfo = countDownInfo
+            //         console.log(this.countDownInfo, 'getAuthCode')
+            //     })
+            // }
+            // console.log(this.timeFn(), 'timeFn')
+            const c = new CountDown({
+                sec: 10
+            })
+            c.start().then(countDownInfo=> {
                 this.countDownInfo = countDownInfo
                 console.log(this.countDownInfo, 'getAuthCode')
             })
-            // console.log(this.timeFn(), 'timeFn')
         },
       getData() {
         this.disabled = true
