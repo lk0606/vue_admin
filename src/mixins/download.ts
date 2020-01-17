@@ -4,11 +4,12 @@ import fetch from '../utils/request'
 export default {
   data() {
     return {
-
+      // loading: false
     }
   },
   methods: {
     download(data: object, url: string, method: string) {
+      this.loading = true
       return fetch({
         url: url || '/api',
         method: method ||'post',
@@ -38,9 +39,11 @@ export default {
           document.body.appendChild(link)
           link.click()
           document.body.removeChild(link)
+          this.loading = false
         // }
       }).catch(err=> {
         console.log(err, 'catch')
+        this.loading = false
       })
     }
   }

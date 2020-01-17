@@ -2,6 +2,7 @@
   <div class="download-container">
     <el-button
       @click="download({}, url, 'get')"
+      :loading="loading"
     >下载文件</el-button>
    <el-form>
      <el-form-item label="mixin调用">
@@ -44,6 +45,7 @@
         url: 'ContentManage/video/988371d6-af85-43f3-aff4-1166b8b67e14.mp4',
         isAreaOk: false,
         areaData: null,
+        loading: false,
       }
     },
     computed: {},

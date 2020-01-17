@@ -2,15 +2,17 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import qs from 'qs'
 
-export interface Res<T = any> {
+export interface Res<T = any> extends AxiosResponse{
     code: number
     info: string
     data: T
-
-    // filter(param: (item) => boolean)
+}
+interface ResData<T = any> {
+    code: number
+    info: string
+    data: T
 }
 
-// const httpAgent = new http.Agent({ keepAlive: true });
 // create an axios instance
 const service = axios.create({
   // baseURL: 'http://localhost:8080', // api的base_url
@@ -42,10 +44,10 @@ service.interceptors.request.use(
     // do something before request is sent
     return config
     // return Promise.resolve(config)
-  }, (err: any) => Promise.reject(err)
+  }, (err: any) => err
 )
 // 响应拦截器
-service.interceptors.response.use((res: AxiosResponse<any>): AxiosResponse<Res> => {
+service.interceptors.response.use((res: AxiosResponse<Res>): AxiosResponse<Res> => {
     console.log(res, 'res')
     if(res.headers['content-type'] === 'video/mp4'){
       // debugger
@@ -58,8 +60,8 @@ service.interceptors.response.use((res: AxiosResponse<any>): AxiosResponse<Res> 
   },
     (err: any) => {
     console.log(err, 'err')
-    return Promise.reject(err)
-    // return err
+    // return Promise.reject(err)
+    return err
   }
 )
 export default service
