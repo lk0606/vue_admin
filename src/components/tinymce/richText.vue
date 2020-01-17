@@ -4,7 +4,7 @@
     <div class="editor-custom-btn-container">
       <el-button
         @click="dialogFormVisible = true"
-        type="primary" size="medium">上传图片</el-button>
+        type="primary">上传图片</el-button>
     </div>
     <el-dialog
       style="padding: 20px 20px 0 20px;"

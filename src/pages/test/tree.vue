@@ -53,7 +53,7 @@
               v-else></el-switch>
             </el-form-item>
           </el-form>
-          <el-button @click.prevent="saveItem" type="success" size="medium" plain>保存</el-button>
+          <el-button @click.prevent="saveItem" type="success" plain>保存</el-button>
         </el-card>
       </div>
 

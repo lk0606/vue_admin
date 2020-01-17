@@ -26,7 +26,7 @@ const service = axios.create({
 // 发送请求前对请求数据进行处理
 service.defaults.transformRequest = [ (data: object): string=> {
   /**
-   *axios 默认请求 context-type application/json
+   * axios 默认请求 context-type application/json
    * 后台需要 @request body 进行处理
    * 这里统一使用 qs  格式化数据
    */
@@ -42,29 +42,24 @@ service.interceptors.request.use(
     // do something before request is sent
     return config
     // return Promise.resolve(config)
-  }, (err: any) => {
-    // do something with request error
-    // return Promise.reject(err)
-    return err
-  }
+  }, (err: any) => Promise.reject(err)
 )
 // 响应拦截器
-service.interceptors.response.use((res: AxiosResponse<any>): AxiosResponse<object> => {
+service.interceptors.response.use((res: AxiosResponse<any>): AxiosResponse<Res> => {
     console.log(res, 'res')
-    // if(res.headers['content-type'] === 'video/mp4'){
-    //   // debugger
-    //   return res
-    // } else {
-    //     return Promise.resolve(res.data)
+    if(res.headers['content-type'] === 'video/mp4'){
+      // debugger
+      return res
+    } else {
+        // return Promise.resolve(res.data)
         return res.data
-    //     return (res as Res).data
-    // }
+    }
 
   },
     (err: any) => {
     console.log(err, 'err')
-    // return Promise.reject(err)
-    return err
+    return Promise.reject(err)
+    // return err
   }
 )
 export default service

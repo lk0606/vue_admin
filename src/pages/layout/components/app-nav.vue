@@ -2,7 +2,6 @@
   <div class="app-nav-container">
     <el-button
       class="logout"
-      size="medium"
       type="warning"
       @click="logout"
     >登出</el-button>

@@ -16,7 +16,7 @@ import store from './store/index'
 // ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-Vue.use(ElementUI)
+Vue.use(ElementUI, { size: 'medium' })
 // Progress
 import 'nprogress/nprogress.css'
 // data deal

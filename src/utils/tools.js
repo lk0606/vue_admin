@@ -77,8 +77,7 @@ export class CountDown {
 }
 
 export function getCode(sec, uniqueKey) {
-    const now = new Date().getTime(),
-        allTs = sec * 1000
+    const now = new Date().getTime()
     let endTime,
         count = 0,
         timer
@@ -86,6 +85,7 @@ export function getCode(sec, uniqueKey) {
     if(cache.get(uniqueKey)) {
         endTime = cache.get(uniqueKey)
     } else if(sec){
+        const allTs = sec * 1000
         endTime = now + allTs
         cache.set(uniqueKey, endTime)
     }
