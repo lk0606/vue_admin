@@ -1,5 +1,5 @@
 
-import _ from 'lodash'
+// import _ from 'lodash'
 import router, { addRoutes, resetRouter } from "../../router"
 // utils
 import cache from '../../utils/cache'
@@ -8,7 +8,7 @@ import { isObject } from "../../utils/data-type-check"
 import {login} from "../../api/login"
 
 
-function partRoleFilter(partPerm: any[], partRole=[]) {
+function partRoleFilter(partPerm: any[], partRole: any[] = []) {
     if(Array.isArray(partPerm)){
         for(let item of partPerm){
             if(item.children){
@@ -23,7 +23,7 @@ function partRoleFilter(partPerm: any[], partRole=[]) {
 }
 
 function allRoleFilter(permObj) {
-  let allRoleList = []
+  let allRoleList: any[] = []
   if(isObject(permObj)){
     Object.keys(permObj).forEach(item=> {
       // console.log(partRoleFilter(permObj[item]), '部分权限')
