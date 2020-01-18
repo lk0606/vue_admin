@@ -8,7 +8,7 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js",
-    "lint": "eslint src --ext .js,.ts",
+    "fix": "eslint src --ext .js,.ts --fix",
     "rename": "ts-node renameJS.ts"
   },
   "dependencies": {
@@ -46,6 +46,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.1.2",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",

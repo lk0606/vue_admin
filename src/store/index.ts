@@ -7,16 +7,16 @@ import Vuex, { StoreOptions } from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
+    state: {
 
-  } as any,
-  mutations: {
+    } as any,
+    mutations: {
 
-  },
-  actions: {
+    },
+    actions: {
 
-  },
-  modules: {
-    user
-  }
+    },
+    modules: {
+        user
+    }
 })

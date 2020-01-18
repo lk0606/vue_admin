@@ -1,11 +1,11 @@
 
 // import _ from 'lodash'
-import router, { addRoutes, resetRouter } from "../../router"
+import router, { addRoutes, resetRouter } from '../../router'
 // utils
 import cache from '../../utils/cache'
-import { isObject } from "../../utils/data-type-check"
+import { isObject } from '../../utils/data-type-check'
 // api
-import {login} from "../../api/login"
+import {login} from '../../api/login'
 
 
 function partRoleFilter(partPerm: any[], partRole: any[] = []) {
@@ -23,29 +23,29 @@ function partRoleFilter(partPerm: any[], partRole: any[] = []) {
 }
 
 function allRoleFilter(permObj) {
-  let allRoleList: any[] = []
-  if(isObject(permObj)){
-    Object.keys(permObj).forEach(item=> {
-      // console.log(partRoleFilter(permObj[item]), '部分权限')
-      allRoleList=allRoleList.concat(partRoleFilter(permObj[item]))
-    })
-  }
-  // console.log(allRoleList, '所有权限')
-  return allRoleList
+    let allRoleList: any[] = []
+    if(isObject(permObj)){
+        Object.keys(permObj).forEach(item=> {
+            // console.log(partRoleFilter(permObj[item]), '部分权限')
+            allRoleList=allRoleList.concat(partRoleFilter(permObj[item]))
+        })
+    }
+    // console.log(allRoleList, '所有权限')
+    return allRoleList
 }
 
 function accessRoutes(addRoutes: any[], permission: any[]) {
-  let arr = addRoutes.filter(item=> {
-    if(allRoleFilter(permission).includes(item.name)){
-      if(item.children && item.children.length) {
-        item.children = accessRoutes(item.children, permission)
-      }
-      return true
-    }
-    return false
-  })
-  // console.log(arr, 'arr')
-  return arr
+    let arr = addRoutes.filter(item=> {
+        if(allRoleFilter(permission).includes(item.name)){
+            if(item.children && item.children.length) {
+                item.children = accessRoutes(item.children, permission)
+            }
+            return true
+        }
+        return false
+    })
+    // console.log(arr, 'arr')
+    return arr
 }
 export interface UseState {
     name: string
@@ -57,77 +57,77 @@ export interface UseState {
 }
 
 export default {
-  namespaced: true,
-  state: {
+    namespaced: true,
+    state: {
     // name: '',
     // roleName: '',
     // permission: [],
     // loginInfo: null,
-    name: cache.get('userInfo') ? cache.get('userInfo').name : '', // user name
-    roleName: cache.get('userInfo') ? cache.get('userInfo').role : '', // role name
-    permission: cache.get('userInfo') ? cache.get('userInfo').permission : {}, //
-    loginInfo: cache.get('loginInfo') ? cache.get('loginInfo') : null, // name and pass
-    addRoutes: [], // 动态路由挂载列表
-    roleList: [], // 可用权限列表
-  } as UseState,
-  mutations: {
-  },
-  actions: {
-    login({ state }, loginInfo) {
-
-      if(loginInfo) {
-        cache.set('loginInfo', loginInfo)
-        state.loginInfo = loginInfo
-      }
-      return new Promise((resolve, reject) => {
-        login(loginInfo).then(res=> {
-            console.log(res, 'res login')
-          const userInfo = res.data.filter(item=> loginInfo.name === item.name)
-          if(userInfo.length>0) {
-            const {name, role, permission} = userInfo[0]
-            // cache
-            cache.set('userInfo', userInfo)
-            // store
-            state.name = name
-            state.roleName = role
-            state.permission = permission
-
-            // state.addRoutes = addRoutes
-            // router.addRoutes(addRoutes)
-            // 权限判定
-            // console.log(accessRoutes(addRoutes, permission), 'accessRoutes(permission)')
-            state.addRoutes = accessRoutes(addRoutes, permission)
-            // console.log(state.addRoutes, 'state.addRoutes')
-            router.addRoutes(state.addRoutes)
-
-            res.data = userInfo
-            resolve(res)
-          }
-          else {
-            reject(`登录失败，登录信息为空`)
-          }
-        }).catch(err=> {
-          console.log(err, 'login err')
-          reject(err)
-        })
-      })
+        name: cache.get('userInfo') ? cache.get('userInfo').name : '', // user name
+        roleName: cache.get('userInfo') ? cache.get('userInfo').role : '', // role name
+        permission: cache.get('userInfo') ? cache.get('userInfo').permission : {}, //
+        loginInfo: cache.get('loginInfo') ? cache.get('loginInfo') : null, // name and pass
+        addRoutes: [], // 动态路由挂载列表
+        roleList: [], // 可用权限列表
+    } as UseState,
+    mutations: {
     },
-    logout({state}) {
-      cache.rm('userInfo')
-      cache.rm('loginInfo')
+    actions: {
+        login({ state }, loginInfo) {
 
-      state.loginInfo = null
-      state.name = ''
-      state.roleName = ''
-      state.permission = []
-      state.addRoutes = []
-      resetRouter()
-      return new Promise((resolve, reject) => {
-        resolve('登出成功')
-      })
+            if(loginInfo) {
+                cache.set('loginInfo', loginInfo)
+                state.loginInfo = loginInfo
+            }
+            return new Promise((resolve, reject) => {
+                login(loginInfo).then(res=> {
+                    console.log(res, 'res login')
+                    const userInfo = res.data.filter(item=> loginInfo.name === item.name)
+                    if(userInfo.length>0) {
+                        const {name, role, permission} = userInfo[0]
+                        // cache
+                        cache.set('userInfo', userInfo)
+                        // store
+                        state.name = name
+                        state.roleName = role
+                        state.permission = permission
+
+                        // state.addRoutes = addRoutes
+                        // router.addRoutes(addRoutes)
+                        // 权限判定
+                        // console.log(accessRoutes(addRoutes, permission), 'accessRoutes(permission)')
+                        state.addRoutes = accessRoutes(addRoutes, permission)
+                        // console.log(state.addRoutes, 'state.addRoutes')
+                        router.addRoutes(state.addRoutes)
+
+                        res.data = userInfo
+                        resolve(res)
+                    }
+                    else {
+                        reject('登录失败，登录信息为空')
+                    }
+                }).catch(err=> {
+                    console.log(err, 'login err')
+                    reject(err)
+                })
+            })
+        },
+        logout({state}) {
+            cache.rm('userInfo')
+            cache.rm('loginInfo')
+
+            state.loginInfo = null
+            state.name = ''
+            state.roleName = ''
+            state.permission = []
+            state.addRoutes = []
+            resetRouter()
+            return new Promise((resolve, reject) => {
+                resolve('登出成功')
+            })
+        }
+    },
+    getters: {
+        addRoutes: state=> state.addRoutes
     }
-  },
-  getters: {
-    addRoutes: state=> state.addRoutes
-  }
 }

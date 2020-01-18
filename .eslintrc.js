@@ -2,12 +2,17 @@ module.exports = {
     "parser": "@typescript-eslint/parser",
     "plugins": ["@typescript-eslint"],
     "parserOptions": {
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.json",
+        // extraFileExtensions: ['.vue']
     },
     "extends": [
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        // "plugin:vue/essential"
     ],
     "rules": {
+		"indent": [1, 4],
+        "semi": [1, "never"],
+        "quotes": [1, "single"],
         "@typescript-eslint/no-inferrable-types": "off",
         // 0 = off, 1 = warn, 2 = error
         "prefer-const": [0, {
