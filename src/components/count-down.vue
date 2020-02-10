@@ -14,6 +14,7 @@
       >
         {{`重写获取验证码${countDownInfo.count >0 ? countDownInfo.count : ''}`}}
       </el-button>
+      <el-button @click="clickNumber">{{number}}</el-button>
     </div>
   </div>
 </template>
@@ -31,6 +32,8 @@
             endTimeKey: ''
         }, // 计时器
         refreshEndTime: null, // 刷新页面时记录结束时间
+        number: 1,
+        isAdd: true,
         disabled: false,
       }
     },
@@ -46,6 +49,21 @@
         }
     },
     methods: {
+        clickNumber() {
+          if(this.number===1) {
+              this.number++
+              this.isAdd = true
+          } else if (this.number===3) {
+              this.number--
+              this.isAdd = false
+          } else {
+              if(this.isAdd) {
+                  this.number++
+              } else {
+                  this.number--
+              }
+          }
+        },
         timeFn() {
           let count = 0
           setInterval(()=> {
