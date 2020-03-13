@@ -35,6 +35,7 @@ function allRoleFilter(permObj) {
 }
 
 function accessRoutes(addRoutes: any[], permission: any[]) {
+    return addRoutes
     let arr = addRoutes.filter(item=> {
         if(allRoleFilter(permission).includes(item.name)){
             if(item.children && item.children.length) {

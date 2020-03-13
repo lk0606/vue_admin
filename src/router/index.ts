@@ -5,7 +5,7 @@ import cache from '../utils/cache'
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import layout from '../pages/layout/index.vue'
+import layout from '../components/layout/index.vue'
 
 Vue.use(Router)
 
@@ -13,6 +13,7 @@ export const addRoutes = [
     {
         path: '/',
         name: '/',
+        // redirect: { name: '/' },
         component: layout,
         meta: {
             title: '首页',
@@ -23,8 +24,22 @@ export const addRoutes = [
         },
     },
     {
+        path: '/theme',
+        name: 'theme',
+        // redirect: { name: 'theme' },
+        component: layout,
+        meta: {
+            title: '主题',
+            icon: 'orange',
+            role: '',
+            // cache: false,
+            // hidden: false,
+        },
+    },
+    {
         path: '/components',
         name: 'components',
+        // redirect: '/components/canvas-compress',
         component: layout,
         meta: {
             title: '组件',
@@ -118,7 +133,45 @@ export const addRoutes = [
                     role: '',
                     // cache: false,
                     // hidden: false,
-                }
+                },
+                children: [
+                    {
+                        path: '/auth/visitor',
+                        name: 'authVisitor',
+                        component: ()=> import( '../pages/auth/auth-admin1.vue' ),
+                        meta: {
+                            title: 'visitor-权限',
+                            // icon: 'lock',
+                            role: 'visitor',
+                            // cache: false,
+                            // hidden: false,
+                        }
+                    },
+                    {
+                        path: '/auth/admin',
+                        name: 'authAdmin',
+                        component: ()=> import( '../pages/auth/auth-admin2.vue' ),
+                        meta: {
+                            title: 'admin-权限',
+                            // icon: 'lock',
+                            role: 'admin',
+                            // cache: false,
+                            // hidden: false,
+                        }
+                    },
+                    {
+                        path: '/auth/superAdmin',
+                        name: 'authSuperAdmin',
+                        component: ()=> import( '../pages/auth/auth-admin3.vue' ),
+                        meta: {
+                            title: 'superAdmin-权限',
+                            // icon: 'lock',
+                            role: 'superAdmin',
+                            // cache: false,
+                            // hidden: false,
+                        }
+                    },
+                ]
             },
             {
                 path: '/auth-visitor',

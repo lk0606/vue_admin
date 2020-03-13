@@ -18,7 +18,9 @@
     <el-button type="danger" size="small" @click="deletePromotion" v-show="hasDefaultConfig">删除Promotion(慎用)</el-button>
   </div>
     <div class="configArea">
-      <div class="left">
+      <div
+          v-if="treeData"
+          class="left">
         <vue-tree-list
           :model="treeData"
           default-tree-node-name="new node"
@@ -97,7 +99,7 @@ export default {
         promId: null,
       },
       bundleID:'',
-      treeData:{},
+      treeData: null,
       hasDefaultConfig:false,
       pType:0,
       id:0,

@@ -56,6 +56,10 @@
             "path": "/"
           },
           {
+            "name": "主题",
+            "path": "/theme"
+          },
+          {
             "name": "组件",
             "path": "components",
             "children": [
@@ -107,6 +111,10 @@
             "name": "首页",
             "path": "/"
           },
+            {
+                "name": "主题",
+                "path": "theme"
+            },
           {
             "name": "组件",
             "path": "components",
@@ -139,7 +147,21 @@
             "children": [
               {
                 "name": "权限配置",
-                "path": "auth-config"
+                "path": "auth-config",
+                  "children": [
+                      {
+                          "name": "游客权限",
+                          "path": "auth-visitor"
+                      },
+                      {
+                          "name": "管理权限",
+                          "path": "auth-admin"
+                      },
+                      {
+                          "name": "超管权限",
+                          "path": "auth-super-admin"
+                      }
+                  ]
               },
               {
                 "name": "游客权限",

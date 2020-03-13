@@ -1,8 +1,8 @@
 <template>
   <div class="index-container">
-    
+
     <div class="table-container">
-      
+
       <div class="table-header-wrap">
         <table
           border="0" cellpadding="0" cellspacing="0"
@@ -27,7 +27,7 @@
           </thead>
         </table>
       </div>
-      
+
       <div class="table-body-wrap">
         <table
           border="0" cellpadding="0" cellspacing="0"
@@ -51,9 +51,9 @@
           </tbody>
         </table>
       </div>
-      
+
     </div>
-    
+
   </div>
 </template>
 

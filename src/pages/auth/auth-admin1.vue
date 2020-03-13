@@ -1,13 +1,12 @@
 <template>
-  <div class="auth-config-container">
-      root auth
-      <router-view></router-view>
+  <div class="auth-admin-container">
+      1
   </div>
 </template>
 
 <script>
   export default {
-    name: 'auth-config',
+    name: 'auth-admin',
     components: {},
     data() {
       return {}
@@ -23,6 +22,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .auth-config-container {
+  .auth-admin-container {
   }
 </style>
