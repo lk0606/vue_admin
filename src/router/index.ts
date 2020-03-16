@@ -126,7 +126,8 @@ export const addRoutes = [
             {
                 path: '/auth-config',
                 name: 'auth-config',
-                component: ()=> import( '../pages/auth/auth-config.vue' ),
+                // component: ()=> import( '../pages/auth/auth-config.vue' ),
+                component: ()=> import( '../components/layout/components/app-main.vue' ),
                 meta: {
                     title: '权限配置',
                     // icon: 'lock',
