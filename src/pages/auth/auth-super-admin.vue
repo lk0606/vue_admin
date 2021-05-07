@@ -20,7 +20,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .auth-super-admin-container {
   }
 </style>

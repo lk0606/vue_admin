@@ -22,7 +22,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .app-main-container {
     padding-top: 20px;
   }

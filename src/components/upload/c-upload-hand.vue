@@ -199,12 +199,12 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .c-upload-hand-container {
   }
 </style>
 
-<style lang="scss">
+<style lang="less">
   .upload-hand {
     width: 100% ;
     .el-upload {

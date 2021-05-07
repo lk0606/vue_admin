@@ -176,7 +176,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .c-range-container {
     .range-container {
       display: flex;

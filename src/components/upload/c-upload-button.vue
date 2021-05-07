@@ -185,7 +185,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .c-upload-button-container {
     .block-wrap {
       display: flex;

@@ -93,7 +93,7 @@ export default {
 }
 </script>
 
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style rel="stylesheet/scss" lang="less" scoped>
     .upload-container {
         .editor-slide-upload {
             margin-bottom: 20px;

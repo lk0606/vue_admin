@@ -59,7 +59,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .app-sub-aside-container {
     height: inherit;
   }

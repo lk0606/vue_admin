@@ -84,7 +84,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .login-container {
     background: #f2f2f2;
     .login-form {

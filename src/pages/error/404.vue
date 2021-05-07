@@ -30,7 +30,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .404
   -container {
   }

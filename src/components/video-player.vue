@@ -119,7 +119,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
   .video-player-container {
   }
 </style>
